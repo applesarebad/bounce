@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://baaoehi7syl8f"]
+
+[ext_resource type="Script" uid="uid://bgyct82hbnj32" path="res://scenes/walls/normal/wall.gd" id="1_15mqr"]
+[ext_resource type="Texture2D" uid="uid://so71lnmahlcx" path="res://assets/icon.svg" id="2_w2q6c"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_rbq2b"]
+a = Vector2(0, -32)
+b = Vector2(0, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x38nd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_w2q6c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Vwall" type="Area2D"]
+script = ExtResource("1_15mqr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_rbq2b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4)
+scale = Vector2(0.03125, 0.4375)
+sprite_frames = SubResource("SpriteFrames_x38nd")

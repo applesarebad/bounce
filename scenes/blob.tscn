@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmgnfjtbtfdcx"]
+
+[ext_resource type="Texture2D" uid="uid://so71lnmahlcx" path="res://assets/icon.svg" id="1_eo8br"]
+[ext_resource type="Script" uid="uid://dut6782tomb24" path="res://scripts/blob.gd" id="1_ngma2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qxf0c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_eo8br")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ngma2"]
+radius = 8.0
+
+[node name="blob" type="CharacterBody2D" groups=["blob"]]
+collision_layer = 2
+script = ExtResource("1_ngma2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_qxf0c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ngma2")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(35, 0)
+collision_mask = 3
+hit_from_inside = true
+collide_with_areas = true
