@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://khrix2wgdkvv"]
+
+[ext_resource type="Texture2D" uid="uid://fliylwgim57k" path="res://assets/pixil-frame-0 (9).png" id="1_yh8r4"]
+[ext_resource type="Script" uid="uid://6d30irn310q0" path="res://ground.gd" id="2_t7tip"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t7tip"]
+texture = ExtResource("1_yh8r4")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_lv0v5"]
+tile_size = Vector2i(64, 64)
+sources/1 = SubResource("TileSetAtlasSource_t7tip")
+
+[node name="TileMapLayer" type="TileMapLayer" unique_id=1895606570]
+tile_set = SubResource("TileSet_lv0v5")
+script = ExtResource("2_t7tip")
