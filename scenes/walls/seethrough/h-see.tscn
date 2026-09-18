@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://sdp1ddhmapp6"]
+[gd_scene format=3 uid="uid://lr474jo811kl"]
 
-[ext_resource type="Script" uid="uid://bgyct82hbnj32" path="res://scenes/walls/wall.gd" id="1_nyr0v"]
-[ext_resource type="Texture2D" uid="uid://so71lnmahlcx" path="res://assets/icon.svg" id="1_t6exa"]
+[ext_resource type="Script" uid="uid://bgyct82hbnj32" path="res://scenes/walls/wall.gd" id="1_8yt64"]
+[ext_resource type="Texture2D" uid="uid://so71lnmahlcx" path="res://assets/icon.svg" id="2_kfbdt"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_nyr0v"]
 a = Vector2(32, 0)
@@ -11,7 +11,7 @@ b = Vector2(-32, 0)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_t6exa")
+"texture": ExtResource("2_kfbdt")
 }],
 "loop": 1,
 "name": &"default",
@@ -19,7 +19,9 @@ animations = [{
 }]
 
 [node name="Hwall" type="Area2D" unique_id=1302609627]
-script = ExtResource("1_nyr0v")
+light_mask = 2
+visibility_layer = 2
+script = ExtResource("1_8yt64")
 reflection = Transform2D(-1, 0, 0, -1, 0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1742625080]
@@ -27,6 +29,7 @@ visible = false
 shape = SubResource("SegmentShape2D_nyr0v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1457610103]
+modulate = Color(1, 1, 1, 0.31764707)
 position = Vector2(-1.9073486e-06, 0)
 scale = Vector2(0.5, 0.05)
 sprite_frames = SubResource("SpriteFrames_ib0ri")

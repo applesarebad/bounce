@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://baaoehi7syl8f"]
+[gd_scene format=3 uid="uid://bg1d8gpqq8snl"]
 
-[ext_resource type="Script" uid="uid://bgyct82hbnj32" path="res://scenes/walls/wall.gd" id="1_15mqr"]
-[ext_resource type="Texture2D" uid="uid://so71lnmahlcx" path="res://assets/icon.svg" id="2_w2q6c"]
+[ext_resource type="Script" uid="uid://bgyct82hbnj32" path="res://scenes/walls/wall.gd" id="1_685yg"]
+[ext_resource type="Texture2D" uid="uid://so71lnmahlcx" path="res://assets/icon.svg" id="2_vnl61"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_rbq2b"]
 a = Vector2(0, -32)
@@ -11,7 +11,7 @@ b = Vector2(0, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_w2q6c")
+"texture": ExtResource("2_vnl61")
 }],
 "loop": 1,
 "name": &"default",
@@ -19,12 +19,14 @@ animations = [{
 }]
 
 [node name="Vwall" type="Area2D" unique_id=462918278]
-script = ExtResource("1_15mqr")
+script = ExtResource("1_685yg")
+type = 1
 reflection = Transform2D(-1, 0, 0, -1, 0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1819060233]
 shape = SubResource("SegmentShape2D_rbq2b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=294902620]
+modulate = Color(0, 1, 0, 1)
 scale = Vector2(0.05, 0.5)
 sprite_frames = SubResource("SpriteFrames_x38nd")

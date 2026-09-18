@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://sdp1ddhmapp6"]
+[gd_scene format=3 uid="uid://cjyihu0v6pywq"]
 
-[ext_resource type="Script" uid="uid://bgyct82hbnj32" path="res://scenes/walls/wall.gd" id="1_nyr0v"]
-[ext_resource type="Texture2D" uid="uid://so71lnmahlcx" path="res://assets/icon.svg" id="1_t6exa"]
+[ext_resource type="Script" uid="uid://bgyct82hbnj32" path="res://scenes/walls/wall.gd" id="1_cmwnl"]
+[ext_resource type="Texture2D" uid="uid://so71lnmahlcx" path="res://assets/icon.svg" id="2_hu0uy"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_nyr0v"]
 a = Vector2(32, 0)
@@ -11,16 +11,17 @@ b = Vector2(-32, 0)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_t6exa")
+"texture": ExtResource("2_hu0uy")
 }],
 "loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="Hwall" type="Area2D" unique_id=1302609627]
-script = ExtResource("1_nyr0v")
-reflection = Transform2D(-1, 0, 0, -1, 0, 0)
+[node name="Hwall" type="Area2D" unique_id=1302609627 groups=["wall"]]
+script = ExtResource("1_cmwnl")
+type = 4
+reflection = Transform2D(0, 0, -1, 0, 0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1742625080]
 visible = false
