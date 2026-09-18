@@ -1,3 +1,15 @@
 [gd_scene format=3 uid="uid://bfnuty6ttvm26"]
 
-[node name="Diagonals" type="TileMapLayer"]
+[ext_resource type="PackedScene" uid="uid://chir1wt4vr7by" path="res://scenes/walls/normal/dwall.tscn" id="1_ofodm"]
+[ext_resource type="PackedScene" uid="uid://ccv5jr3w2s0ek" path="res://scenes/walls/normal/bwall.tscn" id="2_tjgpg"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_hxali"]
+scenes/1/scene = ExtResource("1_ofodm")
+scenes/2/scene = ExtResource("2_tjgpg")
+
+[sub_resource type="TileSet" id="TileSet_j1mw0"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetScenesCollectionSource_hxali")
+
+[node name="Diagonals" type="TileMapLayer" unique_id=1698921875]
+tile_set = SubResource("TileSet_j1mw0")

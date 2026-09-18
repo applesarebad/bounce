@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cprkit2tdieu2"]
+
+[ext_resource type="PackedScene" uid="uid://bpasi7hp5qj4k" path="res://scenes/walls/oneway/rightonly.tscn" id="1_ifaqc"]
+[ext_resource type="PackedScene" uid="uid://baaoehi7syl8f" path="res://scenes/walls/normal/vwall.tscn" id="2_twdrk"]
+[ext_resource type="PackedScene" uid="uid://bg1d8gpqq8snl" path="res://scenes/walls/breakable/v-break.tscn" id="4_7i2ur"]
+[ext_resource type="PackedScene" uid="uid://c52lyc8otv3qa" path="res://scenes/walls/oneway/leftonly.tscn" id="6_kqvyi"]
+[ext_resource type="PackedScene" uid="uid://b5hh1fnn0k1gd" path="res://scenes/walls/laser/v-laser.tscn" id="6_t2w6e"]
+[ext_resource type="PackedScene" uid="uid://bk4lgeyv2pgoy" path="res://scenes/walls/seethrough/v-see.tscn" id="8_f5fac"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ro5pr"]
+scenes/2/scene = ExtResource("2_twdrk")
+scenes/4/scene = ExtResource("4_7i2ur")
+scenes/6/scene = ExtResource("6_t2w6e")
+scenes/8/scene = ExtResource("8_f5fac")
+scenes/9/scene = ExtResource("6_kqvyi")
+scenes/10/scene = ExtResource("1_ifaqc")
+
+[sub_resource type="TileSet" id="TileSet_dn385"]
+tile_offset_axis = 1
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetScenesCollectionSource_ro5pr")
+
+[node name="Verticals" type="TileMapLayer" unique_id=1292141254]
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 9, 0, 3, 0, 1, 0, 0, 0, 0, 0, 0, 0, 9, 0)
+tile_set = SubResource("TileSet_dn385")
