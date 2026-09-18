@@ -19,9 +19,15 @@ run/main_scene="uid://dgo7xlqqfif4t"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://assets/icon.svg"
 
+[autoload]
+
+Groundcheck="*uid://ck81ucs4epvg8"
+
 [global_group]
 
 blob=""
+player=""
+wall=""
 
 [input]
 
