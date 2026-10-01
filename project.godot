@@ -22,6 +22,7 @@ config/icon="res://assets/icon.svg"
 [autoload]
 
 Groundcheck="*uid://ck81ucs4epvg8"
+Constants="*uid://bdcnbxhihg8v1"
 
 [global_group]
 

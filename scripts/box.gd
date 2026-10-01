@@ -1,4 +1,3 @@
-
 extends Wall
 class_name Box
 
@@ -21,7 +20,6 @@ const MIRROR_BACK  := Transform2D(Vector2(0, 1), Vector2(1, 0), Vector2.ZERO)   
 const BOUNCE_BACK  := Transform2D(Vector2(-1, 0), Vector2(0, -1), Vector2.ZERO)  # straight reversal
 
 
-
 func get_reflection(dir = Vector2()) -> Transform2D:
 	if corner == Corner.BOX or not hits_diagonal(dir):
 		return BOUNCE_BACK
@@ -40,30 +38,107 @@ func reflect(direction: Vector2) -> Vector2:
 	var v := get_reflection(direction) * Vector2(direction)
 	return Vector2(roundi(v.x), roundi(v.y))
 
+
+func hit(dir):
+	var ray = RayCast2D.new()
+	ray.hit_from_inside = true
+	ray.collide_with_areas = true
+	ray.position = dir * Constants.GRID_SIZE/4
+	ray.target_position = dir * Constants.GRID_SIZE*3/4
+	add_child(ray)
+	ray.force_raycast_update()
+	if ray.is_colliding() and ray.get_collider() is Wall:
+		ray.get_collider().hit(dir)
+	ray.queue_free()
+
+
 func soft(dir: Vector2) -> bool:
 	var ray = RayCast2D.new()
 	ray.hit_from_inside = true
 	ray.collide_with_areas = true
-	ray.position = dir * 16
-	ray.target_position = dir * 48
-	add_child(ray)         
+	ray.position = dir * Constants.GRID_SIZE/4
+	ray.target_position = dir * Constants.GRID_SIZE*3/4
+	add_child(ray)
 	ray.force_raycast_update()
-	var blocked = ray.is_colliding() and ray.get_collider() is Wall and ray.get_collider().get_reflection(dir) != Transform2D() and !ray.get_collider().soft(dir)
+	var collider = null
+	if ray.is_colliding():
+		collider = ray.get_collider()
 	ray.queue_free()
-	return not blocked
+
+	if collider is Portal:
+		var out_dir = collider.output_direction(dir)
+		var block = collider.outside(dir)
+		if block is Wall and block.get_reflection(out_dir) != Transform2D() and !block.soft(out_dir):
+			return false
+		return true
+	elif collider is Wall:
+		return not (collider.get_reflection(dir) != Transform2D() and !collider.soft(dir))
+	return true
+
+
 func move(dir, speed):
+	# Report before anything changes. _open only keeps the first report per
+	# turn, so a Box that gets pushed more than once in the same chain (shoved,
+	# then shoved again via a portal loop) is still only recorded once, at its
+	# true pre-turn position.
+	mutate()
+
 	var ray = RayCast2D.new()
 	ray.hit_from_inside = true
 	ray.collide_with_areas = true
-	ray.position = dir * 16
-	ray.target_position = dir * 48
-	add_child(ray)         
+	ray.position = dir * Constants.GRID_SIZE/4
+	ray.target_position = dir * Constants.GRID_SIZE*3/4
+	add_child(ray)
 	ray.force_raycast_update()
-	if ray.is_colliding() and ray.get_collider() is Box:
-		ray.get_collider().move(dir,speed)
-	elif ray.is_colliding() and ray.get_collider() is Wall:
-		ray.get_collider().hit()
+	var collider = null
+	if ray.is_colliding():
+		collider = ray.get_collider()
 	ray.queue_free()
-	var tween = create_tween()   
-	tween.tween_property(self, "position", position + 64*dir, 64.0 / speed)
-	
+
+	if collider is Portal:
+		var out_dir = collider.output_direction(dir)
+		var block = collider.outside(dir)
+		if block is Box:
+			block.move(out_dir, speed)
+		elif block is Wall:
+			block.hit(out_dir)
+
+		var tween = create_tween()
+		tween.tween_property(self, "position", position + (Constants.GRID_SIZE/2)*dir, (Constants.GRID_SIZE/2)/speed)
+		await tween.finished
+		collider.teleport(self, dir)
+		tween = create_tween()
+		tween.tween_property(self, "position", position + (Constants.GRID_SIZE/2)*out_dir, (Constants.GRID_SIZE/2)/speed)
+		await tween.finished
+	else:
+		if collider is Box:
+			collider.move(dir, speed)
+		elif collider is Wall:
+			collider.hit(dir)
+		var tween = create_tween()
+		tween.tween_property(self, "position", position + Constants.GRID_SIZE*dir, Constants.GRID_SIZE/speed)
+		await tween.finished
+	print("box: " + str(is_on_ground()))
+
+
+func is_on_ground() -> bool:
+	var cell := Vector2i((global_position / Constants.GRID_SIZE).floor())
+	return Groundcheck.ground.get_cell_source_id(cell) != -1
+
+
+# --- Saving -------------------------------------------------------------
+# Wall provides save_id / set_save_id / mutate / destruction already. Only the
+# position needs adding here — corner/type are authored, never reassigned.
+
+func save_state() -> Dictionary:
+	return {"cell": current_cell()}
+
+
+func load_state(state: Dictionary) -> void:
+	if state.has("cell"):
+		var cell: Vector2i = state["cell"]
+		global_position = (Vector2(cell) + Vector2(0.5, 0.5)) * Constants.GRID_SIZE
+
+
+func current_cell() -> Vector2i:
+	return Vector2i((global_position / Constants.GRID_SIZE).floor())

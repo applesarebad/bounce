@@ -2,48 +2,97 @@
 
 [ext_resource type="PackedScene" uid="uid://bfnuty6ttvm26" path="res://diagonals.tscn" id="1_dwbse"]
 [ext_resource type="PackedScene" uid="uid://qycwcam8adw0" path="res://scenes/player.tscn" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://dagvgef6c0n0e" path="res://scripts/files/world.gd" id="1_k3n1d"]
+[ext_resource type="Script" uid="uid://cs30m6devpggo" path="res://scripts/files/world_camera.gd" id="2_ic0uy"]
 [ext_resource type="PackedScene" uid="uid://cprkit2tdieu2" path="res://verts.tscn" id="2_pkg7o"]
 [ext_resource type="PackedScene" uid="uid://dk21eugcnfu6w" path="res://hors.tscn" id="4_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://b2pnw04i64jn7" path="res://scenes/box.tscn" id="5_036b0"]
 [ext_resource type="PackedScene" uid="uid://khrix2wgdkvv" path="res://ground.tscn" id="5_dwbse"]
 [ext_resource type="PackedScene" uid="uid://336cfdxbw2c5" path="res://scenes/portal.tscn" id="6_pkg7o"]
+[ext_resource type="Script" uid="uid://cnu3u0ap25bvp" path="res://scripts/files/camera_region.gd" id="7_k3n1d"]
+[ext_resource type="Script" uid="uid://cgl3edpx3lqf4" path="res://scripts/files/save_system.gd" id="10_2o6r5"]
+[ext_resource type="Script" uid="uid://cuu1qlla6a63r" path="res://scripts/files/undo_system.gd" id="11_70uel"]
 
-[node name="World" type="Node2D" unique_id=1521731232]
+[node name="World" type="Node2D" unique_id=1521731232 node_paths=PackedStringArray("player", "regions_root", "camera", "start_region")]
+script = ExtResource("1_k3n1d")
+player = NodePath("Player")
+regions_root = NodePath("regions")
+camera = NodePath("Camera2D")
+start_region = NodePath("regions/Node2D")
 
 [node name="Player" parent="." unique_id=721898401 instance=ExtResource("1_f3sb7")]
-position = Vector2(-352, -96)
+position = Vector2(-544, 96)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2017124467]
-position = Vector2(-224, -32)
+position = Vector2(-512, -32)
+script = ExtResource("2_ic0uy")
 
 [node name="walls" type="Node2D" parent="." unique_id=2139643631]
 
 [node name="Diagonals" parent="walls" unique_id=657605503 instance=ExtResource("1_dwbse")]
-tile_map_data = PackedByteArray("AAD8/wIAAAAAAAAAAgA=")
+tile_map_data = PackedByteArray("AAD8/wIAAAAAAAAAAgD9////AAAAAAAAAQD7////AAAAAAAAAgD3//7/AAAAAAAAAwA=")
 
 [node name="Verticals" parent="walls" unique_id=1292141254 instance=ExtResource("2_pkg7o")]
 position = Vector2(32, 0)
-tile_map_data = PackedByteArray("AAD9//7/AAAAAAAAAgD9////AAAAAAAAAgD9//3/AAAAAAAAAgD9//z/AAAAAAAAAgD9/wAAAAAAAAAAAgD9/wEAAAAAAAAAAgDt////AAAAAAAABADt/wEAAAAAAAAABADt/wAAAAAAAAAABADt//7/AAAAAAAABADt//3/AAAAAAAABADt//z/AAAAAAAABAD1//z/AAAAAAAAAgD1//3/AAAAAAAAAgD1//7/AAAAAAAAAgD1////AAAAAAAAAgD1/wAAAAAAAAAAAgD1/wEAAAAAAAAAAgA=")
+tile_map_data = PackedByteArray("AAD9//7/AAAAAAAAAgD9////AAAAAAAAAgD9//3/AAAAAAAAAgD9//z/AAAAAAAAAgD9/wAAAAAAAAAAAgD9/wEAAAAAAAAAAgDt////AAAAAAAABADt/wEAAAAAAAAABADt/wAAAAAAAAAABADt//7/AAAAAAAABADt//3/AAAAAAAABADt//z/AAAAAAAABAD1//z/AAAAAAAAAgD1//7/AAAAAAAAAgD1////AAAAAAAAAgD1/wAAAAAAAAAAAgD1/wEAAAAAAAAAAgDz//3/AAAAAAAABADy//3/AAAAAAAABADx//3/AAAAAAAABAD0//3/AAAAAAAAAgD1//3/AAAAAAAAAgD3//7/AAAAAAAAAgA=")
 
 [node name="Horizontals" parent="walls" unique_id=1339192763 instance=ExtResource("4_aqk2v")]
 position = Vector2(0, 32)
 tile_map_data = PackedByteArray("AAD9/wEAAAAAAAAAAQD8/wEAAAAAAAAAAQD7/wEAAAAAAAAAAQD6/wEAAAAAAAAAAQD5/wEAAAAAAAAAAQD4/wEAAAAAAAAAAQD3/wEAAAAAAAAAAQD2/wEAAAAAAAAAAQD1/wEAAAAAAAAAAQD0/wEAAAAAAAAAAQDz/wEAAAAAAAAAAQDy/wEAAAAAAAAAAQDx/wEAAAAAAAAAAQDw/wEAAAAAAAAAAQDv/wEAAAAAAAAAAQDu/wEAAAAAAAAAAQDu//v/AAAAAAAAAQDv//v/AAAAAAAAAQDw//v/AAAAAAAAAQDx//v/AAAAAAAAAQDy//v/AAAAAAAAAQDz//v/AAAAAAAAAQD0//v/AAAAAAAAAQD1//v/AAAAAAAAAQD2//v/AAAAAAAAAQD3//v/AAAAAAAAAQD4//v/AAAAAAAAAQD5//v/AAAAAAAAAQD6//v/AAAAAAAAAQD7//v/AAAAAAAAAQD8//v/AAAAAAAAAQD9//v/AAAAAAAAAQD2/wAAAAAAAAAACQD3////AAAAAAAABwD4/wAAAAAAAAAABQA=")
 
 [node name="Ground" parent="walls" unique_id=1895606570 instance=ExtResource("5_dwbse")]
+z_index = -1
+tile_map_data = PackedByteArray("AAD5//7/AQABAAEAAAD4//7/AQABAAEAAAD3////AQABAAEAAAD2/wAAAQABAAEAAAD2////AQABAAEAAAD3//7/AQABAAEAAAD4//3/AQABAAEAAAD5//3/AQABAAEAAAD2//7/AQABAAEAAAD1////AQABAAEAAAD0////AQABAAEAAADz/wAAAQABAAEAAADy/wAAAQABAAEAAADx/wAAAQABAAEAAADz////AQABAAEAAAD1//7/AQABAAEAAAD3//3/AQABAAEAAAD2//3/AQABAAEAAAD1//3/AQABAAEAAAD4//z/AQABAAEAAAD1/wAAAQABAAEAAAD0/wAAAQABAAEAAAD1/wEAAQABAAEAAAD2/wEAAQABAAEAAAD3/wAAAQABAAEAAAD4/wAAAQABAAEAAAD5/wAAAQABAAEAAAD6////AQABAAEAAAD6/wAAAQABAAEAAAD4/wEAAQABAAEAAAD3/wEAAQABAAEAAAD2/wIAAQABAAEAAAD3/wIAAQABAAEAAAD5/wEAAQABAAEAAAD6/wEAAQABAAEAAAD7/wEAAQABAAEAAAD8/wEAAQABAAEAAAD6/wIAAQABAAEAAAD5/wIAAQABAAEAAAD4/wMAAQABAAEAAAA=")
 
-[node name="Portal" parent="walls" unique_id=1703199332 node_paths=PackedStringArray("link") instance=ExtResource("6_pkg7o")]
+[node name="regions" type="Node2D" parent="." unique_id=946235785]
+
+[node name="Node2D" type="Node2D" parent="regions" unique_id=1161473737]
+position = Vector2(-768, -384)
+script = ExtResource("7_k3n1d")
+region_name = "test1"
+size_cells = Vector2i(10, 10)
+
+[node name="Node2D2" type="Node2D" parent="regions" unique_id=182902141]
+position = Vector2(-384, 0)
+script = ExtResource("7_k3n1d")
+region_name = "test1"
+size_cells = Vector2i(3, 2)
+
+[node name="Objects" type="Node2D" parent="." unique_id=107722677]
 position = Vector2(-512, -32)
+
+[node name="Box" parent="Objects" unique_id=1743474747 instance=ExtResource("5_036b0")]
+position = Vector2(-96, 0)
+corner = 2
+type = null
+diagonal = null
+reflection = null
+
+[node name="Box3" parent="Objects" unique_id=1626692210 instance=ExtResource("5_036b0")]
+position = Vector2(32, -192)
+corner = 2
+type = null
+diagonal = null
+reflection = null
+
+[node name="Box2" parent="Objects" unique_id=1927072163 instance=ExtResource("5_036b0")]
+position = Vector2(160, -128)
+corner = 4
+type = null
+diagonal = null
+reflection = null
+
+[node name="Portal" parent="Objects" unique_id=1703199332 node_paths=PackedStringArray("link") instance=ExtResource("6_pkg7o")]
+position = Vector2(0, -64)
+rotation = -3.1415925
 link = NodePath("../Portal2")
 
-[node name="Portal2" parent="walls" unique_id=139592397 node_paths=PackedStringArray("link") instance=ExtResource("6_pkg7o")]
-position = Vector2(-512, -96)
-rotation = 3.1415927
+[node name="Portal2" parent="Objects" unique_id=139592397 node_paths=PackedStringArray("link") instance=ExtResource("6_pkg7o")]
 link = NodePath("../Portal")
 
-[node name="Box" parent="." unique_id=1743474747 instance=ExtResource("5_036b0")]
-position = Vector2(-288, 96)
-corner = 2
+[node name="Save" type="Node" parent="." unique_id=617512678 node_paths=PackedStringArray("spawn_root")]
+script = ExtResource("10_2o6r5")
+spawn_root = NodePath("../Objects")
 
-[node name="Box2" parent="." unique_id=1927072163 instance=ExtResource("5_036b0")]
-position = Vector2(-288, -32)
-corner = 4
+[node name="Undo" type="Node" parent="." unique_id=790416101]
+script = ExtResource("11_70uel")

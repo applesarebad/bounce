@@ -10,6 +10,7 @@ func get_direction() -> Vector2:
 func output_direction(dir):
 	var x = 1
 	if dir == get_direction():
+		print("opp")
 		x = -1
 	return link.get_direction() * x
 func teleport(obj, dir: Vector2):
@@ -21,12 +22,21 @@ func outside(dir):
 	var ray = RayCast2D.new()
 	ray.hit_from_inside = true
 	ray.collide_with_areas = true
-	ray.position = out * 16
-	ray.target_position = out * 16
-	link.add_child(ray)         
+	ray.top_level = true
+	link.add_child(ray)
+	ray.position = link.global_position + out * Constants.GRID_SIZE/4
+	ray.target_position = out * Constants.GRID_SIZE/4
 	ray.force_raycast_update()
 	var blocked = null
 	if ray.is_colliding() and ray.get_collider() is not Portal:
 		blocked = ray.get_collider()
-	ray.queue_free()
+	#ray.queue_free()
 	return blocked
+	
+func force_break():
+	#if link:
+		#var other = link
+		#link = null
+		#other.link = null
+		#other.queue_free()
+	queue_free()

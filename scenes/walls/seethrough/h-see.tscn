@@ -21,11 +21,13 @@ animations = [{
 [node name="Hwall" type="Area2D" unique_id=1302609627]
 light_mask = 2
 visibility_layer = 2
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_8yt64")
+type = 3
 reflection = Transform2D(-1, 0, 0, -1, 0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1742625080]
-visible = false
 shape = SubResource("SegmentShape2D_nyr0v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1457610103]
