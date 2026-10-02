@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://khrix2wgdkvv"]
 
 [ext_resource type="Texture2D" uid="uid://fliylwgim57k" path="res://assets/pixil-frame-0 (9).png" id="1_yh8r4"]
-[ext_resource type="Script" uid="uid://6d30irn310q0" path="res://ground.gd" id="2_t7tip"]
+[ext_resource type="Script" uid="uid://6d30irn310q0" path="res://scripts/ground.gd" id="2_t7tip"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t7tip"]
 texture = ExtResource("1_yh8r4")

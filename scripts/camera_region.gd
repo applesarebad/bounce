@@ -2,8 +2,7 @@
 class_name CameraRegion
 extends Node2D
 
-## Replace with your project's existing grid constant.
-const CELL_SIZE:int =  Constants.GRID_SIZE
+const CELL_SIZE: int = Constants.GRID_SIZE
 
 enum Mode {
 	FRAME,  ## Fit the whole region on screen. Islands.
@@ -45,6 +44,8 @@ enum Mode {
 		view_height_cells = maxf(v, 1.0)
 		queue_redraw()
 
+## Resets to false every launch — there's no save system to persist it across
+## sessions right now. Fine for fast-travel gating within a single play session.
 var visited: bool = false
 
 
@@ -73,26 +74,10 @@ func contains_point(p: Vector2) -> bool:
 	return get_bounds().has_point(p)
 
 
-## Only islands the blob has actually reached are fast-travel destinations.
+## Only islands the blob has actually reached, this session, are fast-travel
+## destinations.
 func is_travel_target() -> bool:
 	return mode == Mode.FRAME and visited
-
-
-# --- Saving -----------------------------------------------------------------
-# Regions carry state worth persisting, so they take part in saving like any
-# other object rather than being special-cased in World.
-
-func save_id() -> String:
-	var cell := Vector2i((global_position / CELL_SIZE).floor())
-	return "%d,%d:region" % [cell.x, cell.y]
-
-
-func save_state() -> Dictionary:
-	return {"visited": visited}
-
-
-func load_state(state: Dictionary) -> void:
-	visited = state.get("visited", false)
 
 
 # --- Editor -----------------------------------------------------------------
@@ -100,8 +85,6 @@ func load_state(state: Dictionary) -> void:
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		set_notify_transform(true)
-		return
-	add_to_group(SaveSystem.GROUP)
 
 
 func _notification(what: int) -> void:

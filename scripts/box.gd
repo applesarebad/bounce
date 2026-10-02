@@ -77,12 +77,6 @@ func soft(dir: Vector2) -> bool:
 
 
 func move(dir, speed):
-	# Report before anything changes. _open only keeps the first report per
-	# turn, so a Box that gets pushed more than once in the same chain (shoved,
-	# then shoved again via a portal loop) is still only recorded once, at its
-	# true pre-turn position.
-	mutate()
-
 	var ray = RayCast2D.new()
 	ray.hit_from_inside = true
 	ray.collide_with_areas = true
@@ -124,21 +118,3 @@ func move(dir, speed):
 func is_on_ground() -> bool:
 	var cell := Vector2i((global_position / Constants.GRID_SIZE).floor())
 	return Groundcheck.ground.get_cell_source_id(cell) != -1
-
-
-# --- Saving -------------------------------------------------------------
-# Wall provides save_id / set_save_id / mutate / destruction already. Only the
-# position needs adding here — corner/type are authored, never reassigned.
-
-func save_state() -> Dictionary:
-	return {"cell": current_cell()}
-
-
-func load_state(state: Dictionary) -> void:
-	if state.has("cell"):
-		var cell: Vector2i = state["cell"]
-		global_position = (Vector2(cell) + Vector2(0.5, 0.5)) * Constants.GRID_SIZE
-
-
-func current_cell() -> Vector2i:
-	return Vector2i((global_position / Constants.GRID_SIZE).floor())

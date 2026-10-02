@@ -1,0 +1,80 @@
+[gd_scene format=4 uid="uid://dgo7xlqqfif4t"]
+
+[ext_resource type="Script" uid="uid://dagvgef6c0n0e" path="res://scripts/world.gd" id="1_w7kh3"]
+[ext_resource type="PackedScene" uid="uid://qycwcam8adw0" path="res://scenes/player.tscn" id="2_e3hyu"]
+[ext_resource type="Script" uid="uid://cs30m6devpggo" path="res://scripts/world_camera.gd" id="3_q5onr"]
+[ext_resource type="Script" uid="uid://cnu3u0ap25bvp" path="res://scripts/camera_region.gd" id="4_jhx03"]
+[ext_resource type="PackedScene" uid="uid://b2pnw04i64jn7" path="res://scenes/walls/box.tscn" id="5_o8fc1"]
+[ext_resource type="PackedScene" uid="uid://336cfdxbw2c5" path="res://scenes/walls/portal.tscn" id="6_xo05s"]
+[ext_resource type="PackedScene" uid="uid://bfnuty6ttvm26" path="res://scenes/walls/diagonals.tscn" id="7_dss4m"]
+[ext_resource type="PackedScene" uid="uid://cprkit2tdieu2" path="res://scenes/walls/verts.tscn" id="8_7t5mc"]
+[ext_resource type="PackedScene" uid="uid://dk21eugcnfu6w" path="res://scenes/walls/hors.tscn" id="9_lakw3"]
+[ext_resource type="PackedScene" uid="uid://khrix2wgdkvv" path="res://scenes/walls/ground.tscn" id="10_pm21f"]
+
+[node name="World" type="Node2D" unique_id=1521731232 node_paths=PackedStringArray("player", "regions_root", "camera", "start_region")]
+script = ExtResource("1_w7kh3")
+player = NodePath("Player")
+regions_root = NodePath("regions")
+camera = NodePath("Camera2D")
+start_region = NodePath("regions/Node2D")
+
+[node name="Player" parent="." unique_id=721898401 instance=ExtResource("2_e3hyu")]
+position = Vector2(-288, 96)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2017124467]
+position = Vector2(-512, -32)
+script = ExtResource("3_q5onr")
+
+[node name="regions" type="Node2D" parent="." unique_id=946235785]
+
+[node name="Node2D" type="Node2D" parent="regions" unique_id=1161473737]
+position = Vector2(-704, -256)
+script = ExtResource("4_jhx03")
+region_name = "test1"
+size_cells = Vector2i(10, 10)
+
+[node name="Node2D2" type="Node2D" parent="regions" unique_id=182902141]
+position = Vector2(-320, -256)
+script = ExtResource("4_jhx03")
+region_name = "test1"
+size_cells = Vector2i(3, 2)
+
+[node name="Objects" type="Node2D" parent="." unique_id=107722677]
+
+[node name="Box" parent="Objects" unique_id=1743474747 instance=ExtResource("5_o8fc1")]
+position = Vector2(-608, -32)
+corner = 2
+
+[node name="Box3" parent="Objects" unique_id=1626692210 instance=ExtResource("5_o8fc1")]
+position = Vector2(-480, -224)
+corner = 2
+
+[node name="Box2" parent="Objects" unique_id=1927072163 instance=ExtResource("5_o8fc1")]
+position = Vector2(-352, -160)
+corner = 4
+
+[node name="Portal" parent="Objects" unique_id=1703199332 node_paths=PackedStringArray("link") instance=ExtResource("6_xo05s")]
+position = Vector2(-512, -96)
+rotation = -3.1415925
+link = NodePath("../Portal2")
+
+[node name="Portal2" parent="Objects" unique_id=139592397 node_paths=PackedStringArray("link") instance=ExtResource("6_xo05s")]
+position = Vector2(-384, -32)
+link = NodePath("../Portal")
+
+[node name="walls" type="Node2D" parent="." unique_id=2139643631]
+
+[node name="Diagonals" parent="walls" unique_id=657605503 instance=ExtResource("7_dss4m")]
+tile_map_data = PackedByteArray("AAD3//7/AAAAAAAAAwA=")
+
+[node name="Verticals" parent="walls" unique_id=1292141254 instance=ExtResource("8_7t5mc")]
+position = Vector2(32, 0)
+tile_map_data = PackedByteArray("AAD9//7/AAAAAAAAAgD9////AAAAAAAAAgD9//3/AAAAAAAAAgD9//z/AAAAAAAAAgDt////AAAAAAAABADt/wEAAAAAAAAABADt/wAAAAAAAAAABADt//7/AAAAAAAABADt//3/AAAAAAAABADt//z/AAAAAAAABAD1//z/AAAAAAAAAgD1//7/AAAAAAAAAgD1////AAAAAAAAAgD1/wAAAAAAAAAAAgD1/wEAAAAAAAAAAgDz//3/AAAAAAAABADy//3/AAAAAAAABADx//3/AAAAAAAABAD0//3/AAAAAAAAAgD1//3/AAAAAAAAAgD3//7/AAAAAAAAAgARAAEAAAAAAAAAAgARAAAAAAAAAAAAAgD9/wAAAAAAAAAAAgD9/wEAAAAAAAAAAgA=")
+
+[node name="Horizontals" parent="walls" unique_id=1339192763 instance=ExtResource("9_lakw3")]
+position = Vector2(1, 32)
+tile_map_data = PackedByteArray("AAD9/wEAAAAAAAAAAQD8/wEAAAAAAAAAAQD7/wEAAAAAAAAAAQD6/wEAAAAAAAAAAQD5/wEAAAAAAAAAAQD4/wEAAAAAAAAAAQD3/wEAAAAAAAAAAQD2/wEAAAAAAAAAAQD1/wEAAAAAAAAAAQD0/wEAAAAAAAAAAQDz/wEAAAAAAAAAAQDy/wEAAAAAAAAAAQDx/wEAAAAAAAAAAQDw/wEAAAAAAAAAAQDv/wEAAAAAAAAAAQDu/wEAAAAAAAAAAQDu//v/AAAAAAAAAQDv//v/AAAAAAAAAQDw//v/AAAAAAAAAQDx//v/AAAAAAAAAQDy//v/AAAAAAAAAQDz//v/AAAAAAAAAQD0//v/AAAAAAAAAQD1//v/AAAAAAAAAQD2//v/AAAAAAAAAQD3//v/AAAAAAAAAQD4//v/AAAAAAAAAQD5//v/AAAAAAAAAQD6//v/AAAAAAAAAQD7//v/AAAAAAAAAQD8//v/AAAAAAAAAQD9//v/AAAAAAAAAQD2/wAAAAAAAAAACQD3////AAAAAAAABwD4/wAAAAAAAAAABQA=")
+
+[node name="Ground" parent="walls" unique_id=1895606570 instance=ExtResource("10_pm21f")]
+z_index = -1
+tile_map_data = PackedByteArray("AAD5//7/AQABAAEAAAD4//7/AQABAAEAAAD2/wAAAQABAAEAAAD2////AQABAAEAAAD3//7/AQABAAEAAAD4//3/AQABAAEAAAD5//3/AQABAAEAAAD2//7/AQABAAEAAAD1////AQABAAEAAAD0////AQABAAEAAADz/wAAAQABAAEAAADy/wAAAQABAAEAAADx/wAAAQABAAEAAADz////AQABAAEAAAD1//7/AQABAAEAAAD3//3/AQABAAEAAAD2//3/AQABAAEAAAD1//3/AQABAAEAAAD4//z/AQABAAEAAAD1/wAAAQABAAEAAAD0/wAAAQABAAEAAAD1/wEAAQABAAEAAAD2/wEAAQABAAEAAAD3/wAAAQABAAEAAAD4/wAAAQABAAEAAAD5/wAAAQABAAEAAAD6////AQABAAEAAAD6/wAAAQABAAEAAAD4/wEAAQABAAEAAAD3/wEAAQABAAEAAAD2/wIAAQABAAEAAAD3/wIAAQABAAEAAAD5/wEAAQABAAEAAAD6/wEAAQABAAEAAAD7/wEAAQABAAEAAAD8/wEAAQABAAEAAAD6/wIAAQABAAEAAAD5/wIAAQABAAEAAAD4/wMAAQABAAEAAAA=")

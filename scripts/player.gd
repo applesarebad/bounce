@@ -145,14 +145,14 @@ func fling(dir):
 					block.move(out_dir, 2*speed)
 
 				var tween = create_tween()
-				tween.tween_property(self, "position", position + (Constants.GRID_SIZE/2)*dir, Constants.GRID_SIZE/speed)
+				tween.tween_property(self, "position", position + (Constants.GRID_SIZE/2)*dir, (Constants.GRID_SIZE/4)/speed)
 				await tween.finished
 
 				collider.teleport(self, dir)
 				dir = out_dir
 
 				tween = create_tween()
-				tween.tween_property(self, "position", position + (Constants.GRID_SIZE/2)*dir, Constants.GRID_SIZE/speed)
+				tween.tween_property(self, "position", position + (Constants.GRID_SIZE/2)*dir, (Constants.GRID_SIZE/4)/speed)
 				await tween.finished
 		else:
 			if $ray.is_colliding() and $ray.get_collider() is Box:
