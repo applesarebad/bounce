@@ -23,9 +23,6 @@ func _ready() -> void:
 
 
 # --- Frame mode -------------------------------------------------------------
-
-## Fits `rect` (world coordinates) as large as it will go on screen.
-## `duration` overrides transition_time; pass a negative value to use the default.
 func frame_rect(rect: Rect2, animated: bool = true, duration: float = -1.0) -> void:
 	_following = false
 	position_smoothing_enabled = false
@@ -44,16 +41,11 @@ func frame_rect(rect: Rect2, animated: bool = true, duration: float = -1.0) -> v
 	_tween = create_tween().set_parallel(true)
 	_tween.set_trans(transition_trans).set_ease(transition_ease)
 	_tween.tween_property(self, "global_position", target_pos, time)
-	# Zoom interpolates in log space. A linear tween from 3.0 down to 0.2 spends
-	# almost the whole duration zoomed out and reads as a stall.
 	_tween.tween_method(_apply_zoom_log, log(zoom.x), log(target_zoom), time)
 
 
 # --- Follow mode ------------------------------------------------------------
 
-## Switch to tracking a moving point. `view_height` is the world height the screen
-## should show. Zoom tweens; the pan is handled by Camera2D position smoothing.
-## Safe to call repeatedly — it no-ops unless the view height actually changes.
 func begin_follow(view_height: float, animated: bool = true) -> void:
 	if _following and is_equal_approx(_follow_view_height, view_height):
 		return
@@ -75,8 +67,6 @@ func begin_follow(view_height: float, animated: bool = true) -> void:
 	_tween.set_trans(transition_trans).set_ease(transition_ease)
 	_tween.tween_method(_apply_zoom_log, log(zoom.x), log(target_zoom), transition_time)
 
-
-## Call every frame while following. Keeps the visible rect inside `limits`.
 func update_follow(point: Vector2, limits: Rect2) -> void:
 	if not _following:
 		return
@@ -91,9 +81,6 @@ func is_transitioning() -> bool:
 	return _tween != null and _tween.is_running()
 
 
-## World-space rect currently on screen. Reflects the in-progress zoom and
-## position during a transition, which is what you want when testing whether
-## something is about to leave the view.
 func get_visible_world_rect() -> Rect2:
 	var size := get_viewport_rect().size / zoom
 	return Rect2(get_screen_center_position() - size * 0.5, size)

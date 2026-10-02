@@ -12,9 +12,6 @@ const CORNER_SIGN := {
 	Corner.BOTTOM_RIGHT: Vector2(-1, -1),
 }
 
-# Full-cell mirror/bounce transforms. Only the branch chosen by hits_diagonal()
-# is ever the physically correct one for a given corner — the other two are
-# meaningless for that corner and never applied.
 const MIRROR_SLASH := Transform2D(Vector2(0, -1), Vector2(-1, 0), Vector2.ZERO)  # "/"
 const MIRROR_BACK  := Transform2D(Vector2(0, 1), Vector2(1, 0), Vector2.ZERO)    # "\"
 const BOUNCE_BACK  := Transform2D(Vector2(-1, 0), Vector2(0, -1), Vector2.ZERO)  # straight reversal

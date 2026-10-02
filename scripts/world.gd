@@ -1,22 +1,17 @@
 class_name World
 extends Node2D
 
-## Scene tree this expects:
 ##   World (world.gd)
-##   ├── TileMapLayers (ground / walls-v / walls-h / walls-diag)
-##   ├── Regions        <- CameraRegion nodes go here
-##   ├── Objects        <- crates, logs, breakable walls
+##   ├── walls
+##   ├── Regions     
+##   ├── Objects     
 ##   ├── Player
-##   └── WorldCamera    (world_camera.gd)
+##   └── WorldCamera  
 ##
-## The camera is handed to a projectile and back via explicit track()/release()
-## calls — see Player.shoot() and blob.detonate(). Whatever spawns a projectile
-## is responsible for announcing it; there's no separate container to watch.
-
 enum ProjectileFraming {
-	NEVER,          ## The ball never changes which island is framed.
-	WHEN_OFFSCREEN, ## Reframe only once the ball is about to leave the view.
-	ALWAYS,         ## Reframe the moment the ball crosses into another island.
+	NEVER,          
+	WHEN_OFFSCREEN,
+	ALWAYS,         
 }
 
 @export var player: Node2D
@@ -26,29 +21,20 @@ enum ProjectileFraming {
 @export var map_padding_cells: float = 2.0
 
 @export_group("Projectile framing")
-## Whether a projectile in flight can change which island is framed. FOLLOW
-## regions always engage regardless of this — a long flight needs the camera
-## pulled back before it starts, whatever is making the trip.
+
 @export var projectile_framing: ProjectileFraming = ProjectileFraming.WHEN_OFFSCREEN
 
-## Fraction of the view inset from each edge that counts as "about to leave".
 @export_range(0.0, 0.4) var offscreen_margin: float = 0.1
-
-## Ball-driven reframes use this instead of the camera's normal transition time.
 @export var projectile_transition_time: float = 0.25
 
-## Set by this node on itself. Lets Player/blob reach World without an @export
-## wired through every scene that needs it, while still being a real scene-tree
-## node rather than an Autoload — it needs @export references to this specific
-## level's player, camera and regions, which an Autoload can't hold.
 static var instance: World
 
 var regions: Array[CameraRegion] = []
 var current_region: CameraRegion
 var map_open: bool = false
 
-var _subject: Node2D  ## What the camera is currently watching.
-var _tracked: Node2D  ## The projectile, while one is in flight.
+var _subject: Node2D  
+var _tracked: Node2D  
 
 signal region_changed(region: CameraRegion)
 
@@ -71,32 +57,27 @@ func _ready() -> void:
 
 
 func _exit_tree() -> void:
-	# Static, so it would otherwise outlive this scene and point at a freed node.
+	
 	if instance == self:
 		instance = null
 
 
 # --- Camera subject ---------------------------------------------------------
 
-## Hand the camera to a projectile for the duration of its flight.
+## Hand the camera to a projectile
 func track(node: Node2D) -> void:
 	_tracked = node
 	_subject = node
 	_evaluate_region(true)
 
 
-## Give the camera back to the blob and re-frame immediately.
+## Give the camera back
 func release() -> void:
 	_tracked = null
 	_subject = player
 	_evaluate_region(true)
 
 
-## Subjects can expose get_camera_target() to hand back something other than
-## their own origin — the ball offsetting forward along its travel direction so
-## you see where it's headed, or the blob returning its smoothed visual position
-## rather than the cell it logically occupies. The latter is the clean fix if
-## follow mode judders against your tick rate.
 func subject_position() -> Vector2:
 	if _subject == null:
 		return Vector2.ZERO
@@ -116,21 +97,12 @@ func _process(_delta: float) -> void:
 	if current_region.mode != CameraRegion.Mode.FOLLOW:
 		return
 
-	# Once the subject crosses out of the corridor, widen the clamp to include
-	# where it's headed, otherwise the camera stalls at the corridor edge.
 	var here := region_at(subject_position())
 	var limits := current_region.get_bounds()
 	if here and here != current_region:
 		limits = limits.merge(here.get_bounds())
 	camera.update_follow(subject_position(), limits)
 
-
-## `allow_frame` marks a moment where the blob's position is authoritative:
-## release() and on_player_settled(). Outside those, a FRAME change is only
-## permitted if projectile_framing says the ball may drive one.
-##
-## A null region (unclaimed water between islands) holds the current framing
-## rather than snapping somewhere arbitrary.
 func _evaluate_region(allow_frame: bool) -> void:
 	var here := region_at(subject_position())
 	if here == null or here == current_region:
@@ -159,19 +131,15 @@ func _projectile_may_reframe() -> bool:
 			return false
 
 
-## Call this once the blob has finished a move and settled on a cell centre.
 func on_player_settled() -> void:
 	if map_open:
 		return
 
 	var here := region_at(player.global_position)
 
-	# Arrival is the blob's business alone — a ball reframing onto an island must
-	# not unlock it as a fast-travel destination.
 	if here and here.mode == CameraRegion.Mode.FRAME:
 		here.visited = true
 
-	# The ball still owns the camera; release() will re-frame when it's done.
 	if _tracked != null:
 		return
 
@@ -179,10 +147,6 @@ func on_player_settled() -> void:
 		return
 	_enter_region(here)
 
-
-## Rect2.has_point excludes the right and bottom edges, so flush regions never
-## both claim a boundary point. Where rects genuinely overlap, first match in
-## tree order wins — reorder the children to control priority.
 func region_at(p: Vector2) -> CameraRegion:
 	for r in regions:
 		if r.contains_point(p):
@@ -214,6 +178,7 @@ func world_rect() -> Rect2:
 
 
 func open_map() -> void:
+	print("kojsd")
 	map_open = true
 	camera.frame_rect(world_rect())
 
@@ -233,7 +198,6 @@ func travel_to(r: CameraRegion) -> void:
 
 
 func _unhandled_input(e: InputEvent) -> void:
-	# Add a "toggle_map" action in Project Settings > Input Map.
 	if e.is_action_pressed("toggle_map"):
 		if map_open:
 			close_map()
@@ -246,8 +210,6 @@ func _unhandled_input(e: InputEvent) -> void:
 		return
 
 	if e is InputEventMouseButton and e.pressed and e.button_index == MOUSE_BUTTON_LEFT:
-		# get_global_mouse_position() already accounts for camera zoom and position,
-		# so no unprojection is needed here.
 		var r := region_at(get_global_mouse_position())
 		if r and r.is_travel_target() and r != current_region:
 			travel_to(r)

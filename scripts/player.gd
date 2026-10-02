@@ -39,9 +39,6 @@ func shoot(dir):
 		return
 	var b = blob.instantiate()
 	get_parent().add_child(b)
-	# Hand the camera to the projectile before it takes its first step, so it's
-	# already the thing being framed/followed from frame one rather than
-	# cutting over mid-flight.
 	if World.instance:
 		World.instance.track(b)
 	b.setup(dir, global_position)
@@ -114,9 +111,6 @@ func move(dir):
 		await tween.finished
 	snap_pos_to_grid(position)
 	print(is_on_ground())
-	# The player has actually stopped here — every branch above falls through
-	# to this point, awaits included — so this is the one correct place to
-	# re-check which region the player is standing in.
 	if World.instance:
 		World.instance.on_player_settled()
 	
@@ -162,8 +156,6 @@ func fling(dir):
 			await tween.finished
 	snap_pos_to_grid(position)
 	print(is_on_ground())
-	# Loop only exits via the break statements above, so this runs exactly once,
-	# after the fling has genuinely come to rest.
 	if World.instance:
 		World.instance.on_player_settled()
 			
