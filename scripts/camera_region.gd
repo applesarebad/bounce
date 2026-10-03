@@ -5,8 +5,8 @@ extends Node2D
 const CELL_SIZE: int = Constants.GRID_SIZE
 
 enum Mode {
-	FRAME,  ## Fit the whole region on screen. Islands.
-	FOLLOW, ## Track the subject at a fixed zoom, clamped to this region. Long flights.
+	FRAME, 
+	FOLLOW, 
 }
 
 @export var mode: Mode = Mode.FRAME:
@@ -15,30 +15,23 @@ enum Mode {
 		queue_redraw()
 
 @export var region_name: String = ""
-
-## Region size in grid cells, measured from this node's position (top-left corner).
-## Regions are meant to sit flush against each other; Rect2.has_point excludes the
-## right and bottom edges, so a shared boundary is never claimed twice.
 @export var size_cells: Vector2i = Vector2i(10, 15):
 	set(v):
 		size_cells = Vector2i(maxi(v.x, 1), maxi(v.y, 1))
 		queue_redraw()
 
 @export_group("Frame mode")
-## Breathing room added around the region when fitting it to the screen, in cells.
 @export var padding_cells: float = 1.0:
 	set(v):
 		padding_cells = v
 		queue_redraw()
 
-## Where map travel drops the blob, in cells from the top-left corner.
 @export var spawn_cell: Vector2i = Vector2i.ZERO:
 	set(v):
 		spawn_cell = v
 		queue_redraw()
 
 @export_group("Follow mode")
-## How many cells tall the view is while tracking the subject through this region.
 @export var view_height_cells: float = 15.0:
 	set(v):
 		view_height_cells = maxf(v, 1.0)
@@ -73,19 +66,13 @@ func get_spawn_position() -> Vector2:
 func contains_point(p: Vector2) -> bool:
 	return get_bounds().has_point(p)
 
-
-## Only islands the blob has actually reached, this session, are fast-travel
-## destinations.
 func is_travel_target() -> bool:
 	return mode == Mode.FRAME and visited
 
 
 # --- Editor -----------------------------------------------------------------
 
-## World collects regions via this group rather than walking regions_root's
-## direct children — once a level is its own scene, its CameraRegion(s) are
-## nested inside that scene's own structure, not flat siblings under one
-## shared container, so a children-only scan would silently miss them.
+
 const GROUP := &"camera_region"
 
 
@@ -99,8 +86,7 @@ func _ready() -> void:
 func _notification(what: int) -> void:
 	if what != NOTIFICATION_TRANSFORM_CHANGED or not Engine.is_editor_hint():
 		return
-	# Keep regions on the grid so bounds never land mid-cell. Delete if you'd
-	# rather place them freely.
+
 	var snapped_pos := position.snapped(Vector2(CELL_SIZE, CELL_SIZE))
 	if position != snapped_pos:
 		position = snapped_pos
@@ -120,7 +106,6 @@ func _draw() -> void:
 		draw_rect(r.grow(padding_cells * CELL_SIZE), Color(1, 1, 1, 0.25), false, 1.0)
 		draw_circle((Vector2(spawn_cell) + Vector2(0.5, 0.5)) * CELL_SIZE, CELL_SIZE * 0.2, Color(1.0, 0.85, 0.2, 0.9))
 	else:
-		# Two guides showing how tall the view will be while tracking through here.
 		var mid := r.size.y * 0.5
 		var half := get_view_height() * 0.5
 		for y in [mid - half, mid + half]:

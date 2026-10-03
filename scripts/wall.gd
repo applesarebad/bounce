@@ -30,7 +30,7 @@ func get_reflection(dir = Vector2(0,0)):
 
 func hit(dir):
 	if type == 1:
-		queue_free()
+		destroy()
 
 
 func soft(dir):
@@ -38,4 +38,7 @@ func soft(dir):
 
 
 func force_break():
-	queue_free()
+	
+	destroy()
+func destroy():
+	global_position = Vector2(100000,100000)

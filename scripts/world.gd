@@ -56,7 +56,6 @@ func _ready() -> void:
 			start.visited = true
 		_enter_region(start, false)
 
-
 func _exit_tree() -> void:
 	
 	if instance == self:
@@ -204,6 +203,9 @@ func travel_to(r: CameraRegion) -> void:
 
 
 func _unhandled_input(e: InputEvent) -> void:
+
+	if e.is_action_pressed("undo"):
+		undo()
 	if e.is_action_pressed("toggle_map"):
 		if map_open:
 			close_map()
@@ -221,3 +223,26 @@ func _unhandled_input(e: InputEvent) -> void:
 		if r and r.is_travel_target() and r != current_region:
 			travel_to(r)
 		get_viewport().set_input_as_handled()
+
+#-- save stuff------
+var undo_stack = [Vector2(-32,-32)]
+func save():
+	print("hi")
+	for level in $regions.get_children():
+		if level is Level:
+			level.save()
+	undo_stack.append($Player.position)
+
+	if undo_stack.size() > 100:
+		undo_stack.pop_front()
+func undo():
+	if undo_stack.size() < 2:
+		return
+
+	# Remove the current/latest state
+	undo_stack.pop_back()
+
+	# Get the previous state
+	var state: Vector2 = undo_stack.back()
+	
+	$Player.position = state

@@ -111,8 +111,10 @@ func move(dir):
 		await tween.finished
 	snap_pos_to_grid(position)
 	print(is_on_ground())
+	get_parent().save()
 	if World.instance:
 		World.instance.on_player_settled()
+	
 	
 	
 func fling(dir):
@@ -156,6 +158,7 @@ func fling(dir):
 			await tween.finished
 	snap_pos_to_grid(position)
 	print(is_on_ground())
+	get_parent().save()
 	if World.instance:
 		World.instance.on_player_settled()
 			

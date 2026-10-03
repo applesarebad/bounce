@@ -93,6 +93,7 @@ func step():
 	if reset_tracker:
 		reset_loop_tracking()
 	if check_loop(entry_cell, entry_dir, loop_hits):
+		get_parent().save()
 		detonate()
 		return
 		
@@ -112,7 +113,13 @@ func step():
 			position,
 			(Constants.GRID_SIZE/2) / speed
 		)
+		
 		await tween.finished
+		ray.position = Vector2.ZERO
+		ray.target_position = Vector2.ZERO
+		ray.force_raycast_update()
+		if ray.is_colliding() and ray.get_collider() is Wall:
+			direction = direction*ray.get_collider().get_reflection(direction)
 
 	elif portaling:
 		print(target)

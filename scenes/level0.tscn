@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://c21ihvf71wl1n"]
 
+[ext_resource type="Script" uid="uid://dl4xadlxcoix" path="res://scripts/level.gd" id="1_wrnl3"]
 [ext_resource type="Script" uid="uid://cnu3u0ap25bvp" path="res://scripts/camera_region.gd" id="4_wetln"]
 [ext_resource type="PackedScene" uid="uid://b2pnw04i64jn7" path="res://scenes/walls/box.tscn" id="5_ooohs"]
 [ext_resource type="PackedScene" uid="uid://336cfdxbw2c5" path="res://scenes/walls/portal.tscn" id="6_pnrra"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://khrix2wgdkvv" path="res://scenes/walls/ground.tscn" id="10_3mf5k"]
 
 [node name="level" type="Node2D" unique_id=1521731232]
+script = ExtResource("1_wrnl3")
 
 [node name="regions" type="Node2D" parent="." unique_id=946235785]
 
@@ -44,10 +46,11 @@ link = NodePath("../Portal")
 [node name="walls" type="Node2D" parent="." unique_id=2139643631]
 
 [node name="Diagonals" parent="walls" unique_id=657605503 instance=ExtResource("7_yoi1k")]
+tile_map_data = PackedByteArray("AAD7/wAAAAAAAAAAAwA=")
 
 [node name="Verticals" parent="walls" unique_id=1292141254 instance=ExtResource("8_5xwn4")]
 position = Vector2(32, 0)
-tile_map_data = PackedByteArray("AAD9//7/AAAAAAAAAgD9////AAAAAAAAAgD9//3/AAAAAAAAAgD9//z/AAAAAAAAAgD1//z/AAAAAAAAAgD1//7/AAAAAAAAAgD1////AAAAAAAAAgD1/wAAAAAAAAAAAgD1/wEAAAAAAAAAAgD0//3/AAAAAAAAAgD1//3/AAAAAAAAAgD3//7/AAAAAAAAAgD9/wAAAAAAAAAAAgD9/wEAAAAAAAAAAgA=")
+tile_map_data = PackedByteArray("AAD9//7/AAAAAAAAAgD9////AAAAAAAAAgD9//3/AAAAAAAAAgD9//z/AAAAAAAAAgD1//z/AAAAAAAAAgD1//7/AAAAAAAAAgD1////AAAAAAAAAgD1/wAAAAAAAAAAAgD1/wEAAAAAAAAAAgD1//3/AAAAAAAAAgD3//7/AAAAAAAAAgD9/wAAAAAAAAAAAgD9/wEAAAAAAAAAAgA=")
 
 [node name="Horizontals" parent="walls" unique_id=1339192763 instance=ExtResource("9_3i82n")]
 position = Vector2(1, 32)
@@ -55,4 +58,4 @@ tile_map_data = PackedByteArray("AAD9/wEAAAAAAAAAAQD8/wEAAAAAAAAAAQD7/wEAAAAAAAA
 
 [node name="Ground" parent="walls" unique_id=1895606570 instance=ExtResource("10_3mf5k")]
 z_index = -1
-tile_map_data = PackedByteArray("AAD5//7/AQABAAEAAAD4//7/AQABAAEAAAD2/wAAAQABAAEAAAD2////AQABAAEAAAD3//7/AQABAAEAAAD4//3/AQABAAEAAAD5//3/AQABAAEAAAD2//7/AQABAAEAAAD1////AQABAAEAAAD0////AQABAAEAAADz/wAAAQABAAEAAADy/wAAAQABAAEAAADx/wAAAQABAAEAAADz////AQABAAEAAAD1//7/AQABAAEAAAD3//3/AQABAAEAAAD2//3/AQABAAEAAAD1//3/AQABAAEAAAD4//z/AQABAAEAAAD1/wAAAQABAAEAAAD0/wAAAQABAAEAAAD1/wEAAQABAAEAAAD2/wEAAQABAAEAAAD3/wAAAQABAAEAAAD4/wAAAQABAAEAAAD5/wAAAQABAAEAAAD6////AQABAAEAAAD6/wAAAQABAAEAAAD4/wEAAQABAAEAAAD3/wEAAQABAAEAAAD2/wIAAQABAAEAAAD3/wIAAQABAAEAAAD5/wEAAQABAAEAAAD6/wEAAQABAAEAAAD7/wEAAQABAAEAAAD8/wEAAQABAAEAAAD6/wIAAQABAAEAAAD5/wIAAQABAAEAAAD4/wMAAQABAAEAAAA=")
+tile_map_data = PackedByteArray("AAD5//7/AQABAAEAAAD4//7/AQABAAEAAAD2/wAAAQABAAEAAAD2////AQABAAEAAAD3//7/AQABAAEAAAD4//3/AQABAAEAAAD5//3/AQABAAEAAAD2//7/AQABAAEAAAD3//3/AQABAAEAAAD2//3/AQABAAEAAAD4//z/AQABAAEAAAD2/wEAAQABAAEAAAD3/wAAAQABAAEAAAD4/wAAAQABAAEAAAD5/wAAAQABAAEAAAD6////AQABAAEAAAD6/wAAAQABAAEAAAD4/wEAAQABAAEAAAD3/wEAAQABAAEAAAD5/wEAAQABAAEAAAD6/wEAAQABAAEAAAD7/wEAAQABAAEAAAD8/wEAAQABAAEAAAD2//z/AQABAAEAAAD3//z/AQABAAEAAAD3////AQABAAEAAAD4////AQABAAEAAAD5//z/AQABAAEAAAD5////AQABAAEAAAD6//z/AQABAAEAAAD6//3/AQABAAEAAAD6//7/AQABAAEAAAD7//z/AQABAAEAAAD7//3/AQABAAEAAAD7//7/AQABAAEAAAD7////AQABAAEAAAD7/wAAAQABAAEAAAD8//z/AQABAAEAAAD8//3/AQABAAEAAAD8//7/AQABAAEAAAD8////AQABAAEAAAD8/wAAAQABAAEAAAD9//z/AQABAAEAAAD9//3/AQABAAEAAAD9//7/AQABAAEAAAD9////AQABAAEAAAD9/wAAAQABAAEAAAD9/wEAAQABAAEAAAA=")
