@@ -200,11 +200,6 @@ func check_loop(entry_cell: Vector2i, entry_dir: Vector2, hits: Array) -> bool:
 
 
 func detonate(collider = null):
-	# The projectile's journey is over either way — hand the camera back to the
-	# player now, whether or not this hit was the player. If it was, the player's
-	# own move()/fling() (triggered below) is what the camera will then track,
-	# live, through world._process(); if it wasn't, there's simply nothing left
-	# to point the camera at except the player.
 	if World.instance:
 		World.instance.release()
 	if collider and collider.has_method("_on_body_entered"):

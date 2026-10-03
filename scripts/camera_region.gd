@@ -16,7 +16,9 @@ enum Mode {
 
 @export var region_name: String = ""
 
-
+## Region size in grid cells, measured from this node's position (top-left corner).
+## Regions are meant to sit flush against each other; Rect2.has_point excludes the
+## right and bottom edges, so a shared boundary is never claimed twice.
 @export var size_cells: Vector2i = Vector2i(10, 15):
 	set(v):
 		size_cells = Vector2i(maxi(v.x, 1), maxi(v.y, 1))
@@ -36,11 +38,14 @@ enum Mode {
 		queue_redraw()
 
 @export_group("Follow mode")
+## How many cells tall the view is while tracking the subject through this region.
 @export var view_height_cells: float = 15.0:
 	set(v):
 		view_height_cells = maxf(v, 1.0)
 		queue_redraw()
 
+## Resets to false every launch — there's no save system to persist it across
+## sessions right now. Fine for fast-travel gating within a single play session.
 var visited: bool = false
 
 
@@ -61,26 +66,41 @@ func get_view_height() -> float:
 
 
 func get_spawn_position() -> Vector2:
+	# Cell centre, matching how the rest of the game resolves positions.
 	return global_position + (Vector2(spawn_cell) + Vector2(0.5, 0.5)) * CELL_SIZE
 
 
 func contains_point(p: Vector2) -> bool:
 	return get_bounds().has_point(p)
 
+
+## Only islands the blob has actually reached, this session, are fast-travel
+## destinations.
 func is_travel_target() -> bool:
 	return mode == Mode.FRAME and visited
 
 
 # --- Editor -----------------------------------------------------------------
 
+## World collects regions via this group rather than walking regions_root's
+## direct children — once a level is its own scene, its CameraRegion(s) are
+## nested inside that scene's own structure, not flat siblings under one
+## shared container, so a children-only scan would silently miss them.
+const GROUP := &"camera_region"
+
+
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		set_notify_transform(true)
+		return
+	add_to_group(GROUP)
 
 
 func _notification(what: int) -> void:
 	if what != NOTIFICATION_TRANSFORM_CHANGED or not Engine.is_editor_hint():
 		return
+	# Keep regions on the grid so bounds never land mid-cell. Delete if you'd
+	# rather place them freely.
 	var snapped_pos := position.snapped(Vector2(CELL_SIZE, CELL_SIZE))
 	if position != snapped_pos:
 		position = snapped_pos
@@ -100,6 +120,7 @@ func _draw() -> void:
 		draw_rect(r.grow(padding_cells * CELL_SIZE), Color(1, 1, 1, 0.25), false, 1.0)
 		draw_circle((Vector2(spawn_cell) + Vector2(0.5, 0.5)) * CELL_SIZE, CELL_SIZE * 0.2, Color(1.0, 0.85, 0.2, 0.9))
 	else:
+		# Two guides showing how tall the view will be while tracking through here.
 		var mid := r.size.y * 0.5
 		var half := get_view_height() * 0.5
 		for y in [mid - half, mid + half]:

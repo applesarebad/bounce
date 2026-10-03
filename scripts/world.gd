@@ -2,20 +2,19 @@ class_name World
 extends Node2D
 
 ##   World (world.gd)
-##   ├── walls
-##   ├── Regions     
-##   ├── Objects     
+##   ├── TileMapLayers (ground / walls-v / walls-h / walls-diag)
+##   ├── Regions        <- CameraRegion nodes go here
+##   ├── Objects        <- crates, logs, breakable walls
 ##   ├── Player
-##   └── WorldCamera  
-##
+##   └── WorldCamera    (world_camera.gd)
+
 enum ProjectileFraming {
 	NEVER,          
-	WHEN_OFFSCREEN,
-	ALWAYS,         
+	WHEN_OFFSCREEN, 
+	ALWAYS,       
 }
 
 @export var player: Node2D
-@export var regions_root: Node
 @export var camera: WorldCamera
 @export var start_region: CameraRegion
 @export var map_padding_cells: float = 2.0
@@ -25,6 +24,7 @@ enum ProjectileFraming {
 @export var projectile_framing: ProjectileFraming = ProjectileFraming.WHEN_OFFSCREEN
 
 @export_range(0.0, 0.4) var offscreen_margin: float = 0.1
+
 @export var projectile_transition_time: float = 0.25
 
 static var instance: World
@@ -33,16 +33,17 @@ var regions: Array[CameraRegion] = []
 var current_region: CameraRegion
 var map_open: bool = false
 
-var _subject: Node2D  
+var _subject: Node2D 
 var _tracked: Node2D  
 
 signal region_changed(region: CameraRegion)
 
 
 func _ready() -> void:
-	for c in regions_root.get_children():
-		if c is CameraRegion:
-			regions.append(c)
+
+	for n in get_tree().get_nodes_in_group(CameraRegion.GROUP):
+		if n is CameraRegion:
+			regions.append(n)
 
 	_subject = player
 	instance = self
@@ -64,18 +65,19 @@ func _exit_tree() -> void:
 
 # --- Camera subject ---------------------------------------------------------
 
-## Hand the camera to a projectile
+
 func track(node: Node2D) -> void:
 	_tracked = node
 	_subject = node
 	_evaluate_region(true)
 
 
-## Give the camera back
+
 func release() -> void:
 	_tracked = null
 	_subject = player
 	_evaluate_region(true)
+
 
 
 func subject_position() -> Vector2:
@@ -102,6 +104,8 @@ func _process(_delta: float) -> void:
 	if here and here != current_region:
 		limits = limits.merge(here.get_bounds())
 	camera.update_follow(subject_position(), limits)
+
+
 
 func _evaluate_region(allow_frame: bool) -> void:
 	var here := region_at(subject_position())
@@ -137,8 +141,10 @@ func on_player_settled() -> void:
 
 	var here := region_at(player.global_position)
 
+
 	if here and here.mode == CameraRegion.Mode.FRAME:
 		here.visited = true
+
 
 	if _tracked != null:
 		return
@@ -146,6 +152,7 @@ func on_player_settled() -> void:
 	if here == null or here == current_region:
 		return
 	_enter_region(here)
+
 
 func region_at(p: Vector2) -> CameraRegion:
 	for r in regions:
@@ -178,7 +185,6 @@ func world_rect() -> Rect2:
 
 
 func open_map() -> void:
-	print("kojsd")
 	map_open = true
 	camera.frame_rect(world_rect())
 
@@ -210,6 +216,7 @@ func _unhandled_input(e: InputEvent) -> void:
 		return
 
 	if e is InputEventMouseButton and e.pressed and e.button_index == MOUSE_BUTTON_LEFT:
+
 		var r := region_at(get_global_mouse_position())
 		if r and r.is_travel_target() and r != current_region:
 			travel_to(r)
