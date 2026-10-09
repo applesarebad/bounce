@@ -39,6 +39,7 @@ func shoot(dir):
 		get_parent().get_node("Blobs").add_child(b)
 	else:
 		get_parent().add_child(b)
+	b.global_position = global_position  
 	if World.instance:
 		World.instance.track(b)
 	b.setup(dir, global_position)
@@ -62,7 +63,7 @@ func aim(dir):
 
 func _on_body_entered(dir, distance):
 	print(dir)
-	if distance < 10:
+	if distance < 20:
 		move(dir)
 	else:
 		fling(dir)

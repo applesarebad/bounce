@@ -6,7 +6,7 @@ var distance: int = 0
 var timedout: bool = false
 var ray: RayCast2D
 
-@export var speed: float = 1000
+@export var speed: float = 2000
 
 
 
