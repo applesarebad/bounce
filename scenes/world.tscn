@@ -4,11 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://qycwcam8adw0" path="res://scenes/player.tscn" id="2_e3hyu"]
 [ext_resource type="Script" uid="uid://cs30m6devpggo" path="res://scripts/world_camera.gd" id="3_q5onr"]
 [ext_resource type="Script" uid="uid://cnu3u0ap25bvp" path="res://scripts/camera_region.gd" id="4_jhx03"]
+[ext_resource type="PackedScene" uid="uid://ckevluqkosacc" path="res://levels/world1/level1-1.tscn" id="6_w7kh3"]
 [ext_resource type="PackedScene" uid="uid://bfnuty6ttvm26" path="res://scenes/walls/diagonals.tscn" id="7_dss4m"]
+[ext_resource type="PackedScene" uid="uid://c3lj4fqvyk8qr" path="res://levels/world1/level1-2.tscn" id="7_e3hyu"]
 [ext_resource type="PackedScene" uid="uid://cprkit2tdieu2" path="res://scenes/walls/verts.tscn" id="8_7t5mc"]
+[ext_resource type="PackedScene" uid="uid://bo8176dsju8x8" path="res://levels/world1/level1-5.tscn" id="8_q5onr"]
 [ext_resource type="PackedScene" uid="uid://dk21eugcnfu6w" path="res://scenes/walls/hors.tscn" id="9_lakw3"]
 [ext_resource type="PackedScene" uid="uid://khrix2wgdkvv" path="res://scenes/walls/ground.tscn" id="10_pm21f"]
-[ext_resource type="PackedScene" uid="uid://c21ihvf71wl1n" path="res://scenes/level0.tscn" id="11_e3hyu"]
+[ext_resource type="PackedScene" uid="uid://c21ihvf71wl1n" path="res://levels/level0.tscn" id="11_e3hyu"]
 
 [node name="World" type="Node2D" unique_id=1521731232 node_paths=PackedStringArray("player", "camera", "start_region")]
 script = ExtResource("1_w7kh3")
@@ -32,7 +35,16 @@ region_name = "test1"
 size_cells = Vector2i(1, 1)
 
 [node name="level" parent="regions" unique_id=1939097972 instance=ExtResource("11_e3hyu")]
-position = Vector2(128, -128)
+position = Vector2(-512, 64)
+
+[node name="level2" parent="regions" unique_id=1540849977 instance=ExtResource("6_w7kh3")]
+position = Vector2(-192, -320)
+
+[node name="level3" parent="regions" unique_id=962978178 instance=ExtResource("7_e3hyu")]
+position = Vector2(448, -128)
+
+[node name="level4" parent="regions" unique_id=2016804749 instance=ExtResource("8_q5onr")]
+position = Vector2(576, 320)
 
 [node name="Objects" type="Node2D" parent="." unique_id=107722677]
 

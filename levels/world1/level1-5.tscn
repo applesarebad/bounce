@@ -1,0 +1,42 @@
+[gd_scene format=4 uid="uid://bo8176dsju8x8"]
+
+[ext_resource type="Script" uid="uid://dl4xadlxcoix" path="res://scripts/level.gd" id="1_vfxkj"]
+[ext_resource type="Script" uid="uid://cnu3u0ap25bvp" path="res://scripts/camera_region.gd" id="2_ecy41"]
+[ext_resource type="PackedScene" uid="uid://bfnuty6ttvm26" path="res://scenes/walls/diagonals.tscn" id="3_rbffp"]
+[ext_resource type="PackedScene" uid="uid://cprkit2tdieu2" path="res://scenes/walls/verts.tscn" id="4_kw3te"]
+[ext_resource type="PackedScene" uid="uid://dk21eugcnfu6w" path="res://scenes/walls/hors.tscn" id="5_r1u2u"]
+[ext_resource type="PackedScene" uid="uid://khrix2wgdkvv" path="res://scenes/walls/ground.tscn" id="6_hrwi3"]
+
+[node name="level" type="Node2D" unique_id=1521731232]
+script = ExtResource("1_vfxkj")
+
+[node name="regions" type="Node2D" parent="." unique_id=946235785]
+position = Vector2(192, 256)
+
+[node name="Node2D" type="Node2D" parent="regions" unique_id=1161473737]
+position = Vector2(-192, -256)
+script = ExtResource("2_ecy41")
+region_name = "test1"
+size_cells = Vector2i(7, 6)
+spawn_cell = Vector2i(6, 2)
+
+[node name="Objects" type="Node2D" parent="." unique_id=107722677]
+position = Vector2(192, 256)
+
+[node name="walls" type="Node2D" parent="." unique_id=2139643631]
+position = Vector2(192, 256)
+
+[node name="Diagonals" parent="walls" unique_id=657605503 instance=ExtResource("3_rbffp")]
+tile_map_data = PackedByteArray("AAD+/wAAAAAAAAAAAQD9/wAAAAAAAAAAAgA=")
+
+[node name="Verticals" parent="walls" unique_id=1292141254 instance=ExtResource("4_kw3te")]
+position = Vector2(32, 0)
+tile_map_data = PackedByteArray("AAACAPz/AAAAAAAAAgACAP3/AAAAAAAAAgADAPz/AAAAAAAAAgADAP3/AAAAAAAAAgADAP7/AAAAAAAAAgD9//7/AAAAAAAAAgD9////AAAAAAAAAgACAAAAAAAAAAAAAgA=")
+
+[node name="Horizontals" parent="walls" unique_id=1339192763 instance=ExtResource("5_r1u2u")]
+position = Vector2(1, 32)
+tile_map_data = PackedByteArray("AAD//wAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAAQA=")
+
+[node name="Ground" parent="walls" unique_id=1895606570 instance=ExtResource("6_hrwi3")]
+z_index = -1
+tile_map_data = PackedByteArray("AAD+/wAAAQABAAEAAAD///7/AQABAAEAAAD/////AQABAAEAAAD//wAAAQABAAEAAAAAAP7/AQABAAEAAAAAAAAAAQABAAEAAAABAP7/AQABAAEAAAABAAAAAQABAAEAAAACAP7/AQABAAEAAAACAAAAAQABAAEAAAADAP7/AQABAAEAAAD9/wAAAQABAAEAAAD+//7/AQABAAEAAAD+////AQABAAEAAAACAAEAAQABAAEAAAADAPz/AQABAAEAAAADAP3/AQABAAEAAAA=")
