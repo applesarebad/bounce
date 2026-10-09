@@ -205,7 +205,7 @@ func travel_to(r: CameraRegion) -> void:
 func _unhandled_input(e: InputEvent) -> void:
 
 	if e.is_action_pressed("undo"):
-		undo()
+		undo_check()
 	if e.is_action_pressed("toggle_map"):
 		if map_open:
 			close_map()
@@ -235,7 +235,29 @@ func save():
 
 	if undo_stack.size() > 100:
 		undo_stack.pop_front()
+func undo_check():
+	if $Player.moving or len($Blobs.get_children())>0:
+		print("illegal")
+		revert()
+	else:
+		undo()
+func revert():
+	if has_node("Player"):
+		$Player.stop_movement()		
+	print(get_children())
+	for b in $Blobs.get_children():
+		b.queue_free()
+	print(get_children())
+	save()
+	undo()
 func undo():
+	if $Player.moving or has_node("blob"):
+		print("illegal")
+	
+	
+	for level in $regions.get_children():
+		if level is Level:
+			level.undo()
 	if undo_stack.size() < 2:
 		return
 

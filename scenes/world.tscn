@@ -49,3 +49,5 @@ position = Vector2(1, 32)
 
 [node name="Ground" parent="walls" unique_id=1895606570 instance=ExtResource("10_pm21f")]
 z_index = -1
+
+[node name="Blobs" type="Node2D" parent="." unique_id=581430002]

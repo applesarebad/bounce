@@ -66,11 +66,4 @@ func undo():
 
 
 func _process(delta):
-	if Input.is_action_just_pressed("undo"):
-		undo()
-
-	if Input.is_action_just_pressed("toggle_map"):
-		initialize_level()
-
-	if Input.is_action_just_pressed("reset"):
-		save()
+	pass
