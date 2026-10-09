@@ -1,0 +1,41 @@
+[gd_scene format=4 uid="uid://c44hbr4llta47"]
+
+[ext_resource type="Script" uid="uid://dl4xadlxcoix" path="res://scripts/level.gd" id="1_8bglq"]
+[ext_resource type="Script" uid="uid://cnu3u0ap25bvp" path="res://scripts/camera_region.gd" id="2_om7ye"]
+[ext_resource type="PackedScene" uid="uid://bfnuty6ttvm26" path="res://scenes/walls/diagonals.tscn" id="3_5okpk"]
+[ext_resource type="PackedScene" uid="uid://cprkit2tdieu2" path="res://scenes/walls/verts.tscn" id="4_ixt2d"]
+[ext_resource type="PackedScene" uid="uid://dk21eugcnfu6w" path="res://scenes/walls/hors.tscn" id="5_qf87b"]
+[ext_resource type="PackedScene" uid="uid://khrix2wgdkvv" path="res://scenes/walls/ground.tscn" id="6_bk4dt"]
+
+[node name="level" type="Node2D" unique_id=1521731232]
+script = ExtResource("1_8bglq")
+
+[node name="regions" type="Node2D" parent="." unique_id=946235785]
+position = Vector2(192, 256)
+
+[node name="Node2D" type="Node2D" parent="regions" unique_id=1161473737]
+position = Vector2(-192, -256)
+script = ExtResource("2_om7ye")
+region_name = "test1"
+size_cells = Vector2i(8, 6)
+spawn_cell = Vector2i(3, 1)
+
+[node name="Objects" type="Node2D" parent="." unique_id=107722677]
+position = Vector2(192, 256)
+
+[node name="walls" type="Node2D" parent="." unique_id=2139643631]
+position = Vector2(192, 256)
+
+[node name="Diagonals" parent="walls" unique_id=657605503 instance=ExtResource("3_5okpk")]
+
+[node name="Verticals" parent="walls" unique_id=1292141254 instance=ExtResource("4_ixt2d")]
+position = Vector2(32, 0)
+tile_map_data = PackedByteArray("AAD9//3/AAAAAAAABAD9//7/AAAAAAAABAD9////AAAAAAAABAD9/wAAAAAAAAAABAD8//3/AAAAAAAABAA=")
+
+[node name="Horizontals" parent="walls" unique_id=1339192763 instance=ExtResource("5_qf87b")]
+position = Vector2(1, 32)
+tile_map_data = PackedByteArray("AAABAAAAAAAAAAAAAQACAAAAAAAAAAAAAQADAAAAAAAAAAAAAQAEAAAAAAAAAAAAAQABAPz/AAAAAAAAAQACAPz/AAAAAAAAAQADAPz/AAAAAAAAAQAEAPz/AAAAAAAAAQAAAP3/AAAAAAAAAQA=")
+
+[node name="Ground" parent="walls" unique_id=1895606570 instance=ExtResource("6_bk4dt")]
+z_index = -1
+tile_map_data = PackedByteArray("AAAAAP3/AQABAAEAAAABAP3/AQABAAEAAAABAP//AQABAAEAAAABAAAAAQABAAEAAAACAP3/AQABAAEAAAACAP//AQABAAEAAAACAAAAAQABAAEAAAADAP3/AQABAAEAAAADAP7/AQABAAEAAAADAP//AQABAAEAAAAEAP3/AQABAAEAAAAEAP7/AQABAAEAAAAEAP//AQABAAEAAAAEAAAAAQABAAEAAAABAP7/AQABAAEAAAA=")
