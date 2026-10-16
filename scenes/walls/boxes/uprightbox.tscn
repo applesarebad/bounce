@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dqqf2k7xi1r87"]
+
+[ext_resource type="Script" uid="uid://cxeq1d7lcgkle" path="res://scripts/box.gd" id="1_ed17y"]
+[ext_resource type="Texture2D" uid="uid://dy7dyi1qtcpe0" path="res://assets/box/Untitled_Artwork-5 (1).png" id="2_ed17y"]
+[ext_resource type="Texture2D" uid="uid://bqfk7ruarg3cw" path="res://assets/box/Untitled_Artwork-6.png" id="3_2lv4n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0xmcs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ed17y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2lv4n")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xmcs"]
+size = Vector2(14, 13)
+
+[node name="Box" type="Area2D" unique_id=1743474747]
+script = ExtResource("1_ed17y")
+corner = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1148627691]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_0xmcs")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=226174407]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_0xmcs")

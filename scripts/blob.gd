@@ -93,7 +93,7 @@ func step():
 	if reset_tracker:
 		reset_loop_tracking()
 	if check_loop(entry_cell, entry_dir, loop_hits):
-		get_parent().save()
+		get_parent().get_parent().save()
 		detonate()
 		return
 		

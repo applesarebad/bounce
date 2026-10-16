@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://baaoehi7syl8f"]
 
 [ext_resource type="Script" uid="uid://bgyct82hbnj32" path="res://scripts/wall.gd" id="1_15mqr"]
-[ext_resource type="Texture2D" uid="uid://so71lnmahlcx" path="res://assets/icon.svg" id="2_w2q6c"]
+[ext_resource type="Texture2D" uid="uid://cuf8ytxevijti" path="res://assets/wall/Untitled_Artwork-1 (4).png" id="2_x38nd"]
+[ext_resource type="Texture2D" uid="uid://bvofedw1i6n2g" path="res://assets/wall/Untitled_Artwork-2 (4).png" id="3_one3c"]
+[ext_resource type="Texture2D" uid="uid://dbbj6tn53ql1t" path="res://assets/wall/Untitled_Artwork-3 (4).png" id="4_qk8dy"]
+[ext_resource type="Texture2D" uid="uid://d2nsmf5241iot" path="res://assets/wall/Untitled_Artwork-4 (4).png" id="5_cs6x3"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_rbq2b"]
 a = Vector2(0, -32)
@@ -11,7 +14,16 @@ b = Vector2(0, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_w2q6c")
+"texture": ExtResource("2_x38nd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_one3c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qk8dy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cs6x3")
 }],
 "loop": 1,
 "name": &"default",
@@ -26,5 +38,5 @@ reflection = Transform2D(-1, 0, 0, -1, 0, 0)
 shape = SubResource("SegmentShape2D_rbq2b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=294902620]
-scale = Vector2(0.05, 0.5)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_x38nd")

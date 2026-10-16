@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dl4xadlxcoix" path="res://scripts/level.gd" id="1_wrnl3"]
 [ext_resource type="Script" uid="uid://cnu3u0ap25bvp" path="res://scripts/camera_region.gd" id="4_wetln"]
-[ext_resource type="PackedScene" uid="uid://b2pnw04i64jn7" path="res://scenes/walls/box.tscn" id="5_ooohs"]
-[ext_resource type="PackedScene" uid="uid://336cfdxbw2c5" path="res://scenes/walls/portal.tscn" id="6_pnrra"]
+[ext_resource type="PackedScene" uid="uid://b2pnw04i64jn7" path="res://scenes/walls/boxes/box.tscn" id="5_ooohs"]
+[ext_resource type="PackedScene" uid="uid://336cfdxbw2c5" path="res://scenes/walls/bortals/portal.tscn" id="6_pnrra"]
 [ext_resource type="PackedScene" uid="uid://bfnuty6ttvm26" path="res://scenes/walls/diagonals.tscn" id="7_yoi1k"]
 [ext_resource type="PackedScene" uid="uid://cprkit2tdieu2" path="res://scenes/walls/verts.tscn" id="8_5xwn4"]
 [ext_resource type="PackedScene" uid="uid://dk21eugcnfu6w" path="res://scenes/walls/hors.tscn" id="9_3i82n"]
@@ -50,7 +50,7 @@ tile_map_data = PackedByteArray("AAD7/wAAAAAAAAAAAwA=")
 
 [node name="Verticals" parent="walls" unique_id=1292141254 instance=ExtResource("8_5xwn4")]
 position = Vector2(32, 0)
-tile_map_data = PackedByteArray("AAD9//7/AAAAAAAAAgD9////AAAAAAAAAgD9//3/AAAAAAAAAgD9//z/AAAAAAAAAgD1//z/AAAAAAAAAgD1//7/AAAAAAAAAgD1////AAAAAAAAAgD1/wAAAAAAAAAAAgD1/wEAAAAAAAAAAgD1//3/AAAAAAAAAgD3//7/AAAAAAAAAgD9/wAAAAAAAAAAAgD9/wEAAAAAAAAAAgA=")
+tile_map_data = PackedByteArray("AAD///////////////8DAAEA///////////9//7/AAAAAAAAAgD9////AAAAAAAAAgD9//3/AAAAAAAAAgD9//z/AAAAAAAAAgD1//z/AAAAAAAAAgD1//7/AAAAAAAAAgD1////AAAAAAAAAgD1/wAAAAAAAAAAAgD1/wEAAAAAAAAAAgD1//3/AAAAAAAAAgD3//7/AAAAAAAAAgD9/wAAAAAAAAAAAgD9/wEAAAAAAAAAAgA=")
 
 [node name="Horizontals" parent="walls" unique_id=1339192763 instance=ExtResource("9_3i82n")]
 position = Vector2(1, 32)
