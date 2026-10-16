@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://336cfdxbw2c5"]
 
 [ext_resource type="Script" uid="uid://bf1o8v776di0v" path="res://scripts/portal.gd" id="1_1ffj6"]
-[ext_resource type="Texture2D" uid="uid://b1y7itu67cupv" path="res://assets/portal/Untitled_Artwork-1 (6).png" id="2_b5gm3"]
-[ext_resource type="Texture2D" uid="uid://hujx58bkuyxo" path="res://assets/portal/Untitled_Artwork-2 (6).png" id="3_gy8fd"]
-[ext_resource type="Texture2D" uid="uid://d26c2mxqwtkct" path="res://assets/portal/Untitled_Artwork-3 (5).png" id="4_m7aax"]
-[ext_resource type="Texture2D" uid="uid://ds15hvwa8srey" path="res://assets/portal/Untitled_Artwork-4 (5).png" id="5_h80ax"]
-[ext_resource type="Texture2D" uid="uid://dmgwocm1hx3p5" path="res://assets/portal/Untitled_Artwork-5 (4).png" id="6_yvaqc"]
+[ext_resource type="Texture2D" uid="uid://bpf1o450m52hp" path="res://assets/portal/Untitled_Artwork-1 (7).png" id="2_eipuh"]
+[ext_resource type="Texture2D" uid="uid://c5q6j4cupar4d" path="res://assets/portal/Untitled_Artwork-2 (7).png" id="3_b5gm3"]
+[ext_resource type="Texture2D" uid="uid://to38ymvmfpvj" path="res://assets/portal/Untitled_Artwork-3 (6).png" id="4_gy8fd"]
+[ext_resource type="Texture2D" uid="uid://cqqim6mg55b7h" path="res://assets/portal/Untitled_Artwork-4 (6).png" id="5_m7aax"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7tip"]
 size = Vector2(18, 50)
@@ -14,19 +13,16 @@ size = Vector2(18, 50)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_b5gm3")
+"texture": ExtResource("2_eipuh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_gy8fd")
+"texture": ExtResource("3_b5gm3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_m7aax")
+"texture": ExtResource("4_gy8fd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_h80ax")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_yvaqc")
+"texture": ExtResource("5_m7aax")
 }],
 "loop": 1,
 "name": &"default",
@@ -40,8 +36,9 @@ script = ExtResource("1_1ffj6")
 shape = SubResource("RectangleShape2D_t7tip")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=214247464]
-modulate = Color(0, 0, 1, 1)
+modulate = Color(0, 0.19590911, 0.9999996, 1)
 position = Vector2(-9.536743e-07, -1.4305115e-06)
 scale = Vector2(0.25, 0.24999999)
 sprite_frames = SubResource("SpriteFrames_0xmcs")
 autoplay = "default"
+frame_progress = 0.05182003

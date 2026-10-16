@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://yr5g3okh7qnc"]
 
 [ext_resource type="Script" uid="uid://bf1o8v776di0v" path="res://scripts/portal.gd" id="1_lir7g"]
-[ext_resource type="Texture2D" uid="uid://b1y7itu67cupv" path="res://assets/portal/Untitled_Artwork-1 (6).png" id="2_st6k7"]
-[ext_resource type="Texture2D" uid="uid://hujx58bkuyxo" path="res://assets/portal/Untitled_Artwork-2 (6).png" id="3_0bq5r"]
-[ext_resource type="Texture2D" uid="uid://d26c2mxqwtkct" path="res://assets/portal/Untitled_Artwork-3 (5).png" id="4_yo23u"]
-[ext_resource type="Texture2D" uid="uid://ds15hvwa8srey" path="res://assets/portal/Untitled_Artwork-4 (5).png" id="5_fdnpb"]
-[ext_resource type="Texture2D" uid="uid://dmgwocm1hx3p5" path="res://assets/portal/Untitled_Artwork-5 (4).png" id="6_14x0t"]
+[ext_resource type="Texture2D" uid="uid://bpf1o450m52hp" path="res://assets/portal/Untitled_Artwork-1 (7).png" id="2_xd5yg"]
+[ext_resource type="Texture2D" uid="uid://c5q6j4cupar4d" path="res://assets/portal/Untitled_Artwork-2 (7).png" id="3_lir7g"]
+[ext_resource type="Texture2D" uid="uid://to38ymvmfpvj" path="res://assets/portal/Untitled_Artwork-3 (6).png" id="4_st6k7"]
+[ext_resource type="Texture2D" uid="uid://cqqim6mg55b7h" path="res://assets/portal/Untitled_Artwork-4 (6).png" id="5_0bq5r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7tip"]
 size = Vector2(18, 50)
@@ -14,19 +13,16 @@ size = Vector2(18, 50)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_st6k7")
+"texture": ExtResource("2_xd5yg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_0bq5r")
+"texture": ExtResource("3_lir7g")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_yo23u")
+"texture": ExtResource("4_st6k7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_fdnpb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_14x0t")
+"texture": ExtResource("5_0bq5r")
 }],
 "loop": 1,
 "name": &"default",
@@ -44,3 +40,4 @@ modulate = Color(0.92035645, 0.49367696, 1.1551381e-06, 1)
 position = Vector2(-9.536743e-07, -1.4305115e-06)
 scale = Vector2(0.25, 0.24999999)
 sprite_frames = SubResource("SpriteFrames_0xmcs")
+autoplay = "default"
