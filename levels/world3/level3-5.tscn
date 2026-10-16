@@ -1,0 +1,49 @@
+[gd_scene format=4 uid="uid://3ltm18sp8rel"]
+
+[ext_resource type="Script" uid="uid://dl4xadlxcoix" path="res://scripts/level.gd" id="1_b1vsx"]
+[ext_resource type="Script" uid="uid://cnu3u0ap25bvp" path="res://scripts/camera_region.gd" id="2_lm8m0"]
+[ext_resource type="PackedScene" uid="uid://csbxikawbnqah" path="res://scenes/walls/boxes/downrightbox.tscn" id="3_4tgpx"]
+[ext_resource type="PackedScene" uid="uid://b2pnw04i64jn7" path="res://scenes/walls/boxes/box.tscn" id="4_ac6br"]
+[ext_resource type="PackedScene" uid="uid://bfnuty6ttvm26" path="res://scenes/walls/diagonals.tscn" id="5_576to"]
+[ext_resource type="PackedScene" uid="uid://cprkit2tdieu2" path="res://scenes/walls/verts.tscn" id="6_qr3sb"]
+[ext_resource type="PackedScene" uid="uid://dk21eugcnfu6w" path="res://scenes/walls/hors.tscn" id="7_v7tgn"]
+[ext_resource type="PackedScene" uid="uid://khrix2wgdkvv" path="res://scenes/walls/ground.tscn" id="8_gyb7h"]
+
+[node name="level" type="Node2D" unique_id=1521731232]
+script = ExtResource("1_b1vsx")
+
+[node name="regions" type="Node2D" parent="." unique_id=946235785]
+position = Vector2(192, 256)
+
+[node name="Node2D" type="Node2D" parent="regions" unique_id=1161473737]
+position = Vector2(-128, -192)
+script = ExtResource("2_lm8m0")
+region_name = "test1"
+size_cells = Vector2i(9, 6)
+spawn_cell = Vector2i(8, 5)
+
+[node name="Objects" type="Node2D" parent="." unique_id=107722677]
+position = Vector2(192, 256)
+
+[node name="Box" parent="Objects" unique_id=1743474747 instance=ExtResource("3_4tgpx")]
+position = Vector2(160, -160)
+
+[node name="Box2" parent="Objects" unique_id=1397141306 instance=ExtResource("4_ac6br")]
+position = Vector2(160, 160)
+
+[node name="walls" type="Node2D" parent="." unique_id=2139643631]
+position = Vector2(192, 256)
+
+[node name="Diagonals" parent="walls" unique_id=657605503 instance=ExtResource("5_576to")]
+
+[node name="Verticals" parent="walls" unique_id=1292141254 instance=ExtResource("6_qr3sb")]
+position = Vector2(32, 0)
+tile_map_data = PackedByteArray("AAAGAP3/AAAAAAAAAgAGAP7/AAAAAAAAAgAGAAAAAAAAAAAAAgAGAAEAAAAAAAAAAgAGAAIAAAAAAAAAAgD9//3/AAAAAAAABgD9//7/AAAAAAAABgD9////AAAAAAAABgD9/wAAAAAAAAAABgD9/wEAAAAAAAAABgD9/wIAAAAAAAAABgAGAP//AAAAAAAAAgA=")
+
+[node name="Horizontals" parent="walls" unique_id=1339192763 instance=ExtResource("7_v7tgn")]
+position = Vector2(1, 32)
+tile_map_data = PackedByteArray("AAAFAPz/AAAAAAAAAQAEAPz/AAAAAAAAAQADAPz/AAAAAAAAAQACAPz/AAAAAAAAAQABAPz/AAAAAAAABQAAAPz/AAAAAAAABQD///z/AAAAAAAABQD+//z/AAAAAAAABQAGAAIAAAAAAAAAAQAFAAIAAAAAAAAAAQAEAAIAAAAAAAAAAQADAAIAAAAAAAAAAQD+/wIAAAAAAAAABQAAAAIAAAAAAAAABQABAAIAAAAAAAAABQACAAIAAAAAAAAABQA=")
+
+[node name="Ground" parent="walls" unique_id=1895606570 instance=ExtResource("8_gyb7h")]
+z_index = -1
+tile_map_data = PackedByteArray("AAD+//3/AQABAAAAAAD+//7/AQABAAAAAAD+////AQABAAAAAAD+/wAAAQABAAAAAAD//wAAAQABAAAAAAD//wEAAQABAAAAAAAAAAEAAQABAAAAAAABAAEAAQABAAAAAAACAAEAAQABAAAAAAACAAAAAQABAAAAAAABAAAAAQABAAAAAAAAAAAAAQABAAAAAAD+/wEAAQABAAAAAAAAAP//AQABAAAAAAD/////AQABAAAAAAABAP//AQABAAAAAAACAP//AQABAAAAAAACAP7/AQABAAAAAAABAP7/AQABAAAAAAAAAP7/AQABAAAAAAD///7/AQABAAAAAAD///3/AQABAAAAAAAAAP3/AQABAAAAAAABAP3/AQABAAAAAAACAP3/AQABAAAAAAD+/wIAAQABAAAAAAD//wIAAQABAAAAAAAAAAIAAQABAAAAAAABAAIAAQABAAAAAAACAAIAAQABAAAAAAADAP3/AQABAAAAAAAEAP3/AQABAAAAAAAFAP3/AQABAAAAAAAGAP3/AQABAAAAAAAGAP7/AQABAAAAAAAGAP//AQABAAAAAAAGAAAAAQABAAAAAAAGAAEAAQABAAAAAAAGAAIAAQABAAAAAAAFAAIAAQABAAAAAAAEAAIAAQABAAAAAAADAAIAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAAFAAEAAQABAAAAAAAFAAAAAQABAAAAAAAEAAAAAQABAAAAAAADAAAAAQABAAAAAAADAP//AQABAAAAAAAEAP//AQABAAAAAAAFAP//AQABAAAAAAAFAP7/AQABAAAAAAAEAP7/AQABAAAAAAADAP7/AQABAAAAAAA=")

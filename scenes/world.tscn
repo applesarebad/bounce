@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dgo7xlqqfif4t"]
+[gd_scene format=4 uid="uid://dgo7xlqqfif4t"]
 
 [ext_resource type="Script" uid="uid://dagvgef6c0n0e" path="res://scripts/world.gd" id="1_w7kh3"]
 [ext_resource type="PackedScene" uid="uid://qycwcam8adw0" path="res://scenes/player.tscn" id="2_e3hyu"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c3lj4fqvyk8qr" path="res://levels/world1/level1-2.tscn" id="7_e3hyu"]
 [ext_resource type="PackedScene" uid="uid://cprkit2tdieu2" path="res://scenes/walls/verts.tscn" id="8_7t5mc"]
 [ext_resource type="PackedScene" uid="uid://bo8176dsju8x8" path="res://levels/world1/level1-5.tscn" id="8_q5onr"]
+[ext_resource type="PackedScene" uid="uid://7h0oyqpct2u8" path="res://levels/world3/level3-4.tscn" id="9_jhx03"]
 [ext_resource type="PackedScene" uid="uid://dk21eugcnfu6w" path="res://scenes/walls/hors.tscn" id="9_lakw3"]
 [ext_resource type="PackedScene" uid="uid://khrix2wgdkvv" path="res://scenes/walls/ground.tscn" id="10_pm21f"]
 [ext_resource type="PackedScene" uid="uid://c21ihvf71wl1n" path="res://levels/level0.tscn" id="11_e3hyu"]
@@ -46,20 +47,25 @@ position = Vector2(448, -128)
 [node name="level4" parent="regions" unique_id=2016804749 instance=ExtResource("8_q5onr")]
 position = Vector2(576, 320)
 
+[node name="level5" parent="regions" unique_id=1273335357 instance=ExtResource("9_jhx03")]
+position = Vector2(-192, 192)
+
 [node name="Objects" type="Node2D" parent="." unique_id=107722677]
 
 [node name="walls" type="Node2D" parent="." unique_id=2139643631]
 
 [node name="Diagonals" parent="walls" unique_id=657605503 instance=ExtResource("7_dss4m")]
+tile_map_data = PackedByteArray("AAD+/wAAAAAAAAAAAgA=")
 
 [node name="Verticals" parent="walls" unique_id=1292141254 instance=ExtResource("8_7t5mc")]
 position = Vector2(32, 0)
-tile_map_data = PackedByteArray()
+tile_map_data = PackedByteArray("AAABAP//AAAAAAAACwA=")
 
 [node name="Horizontals" parent="walls" unique_id=1339192763 instance=ExtResource("9_lakw3")]
 position = Vector2(1, 32)
 
 [node name="Ground" parent="walls" unique_id=1895606570 instance=ExtResource("10_pm21f")]
 z_index = -1
+tile_map_data = PackedByteArray("AAABAP//AQABAAAAAAACAP//AQABAAAAAAACAP7/AQABAAAAAAABAP7/AQABAAAAAAACAAAAAQABAAAAAAABAAAAAQABAAAAAAA=")
 
 [node name="Blobs" type="Node2D" parent="." unique_id=581430002]
