@@ -80,10 +80,13 @@ func step():
 					bounce_anim = true
 				else:
 					target = direction * ((Constants.GRID_SIZE/2) if portaling else Constants.GRID_SIZE)
-				direction *= transformer
+				if transformer != Transform2D() * 100:   # the laserway sentinel isn't a real reflection, don't apply it
+					direction *= transformer
 				if wall.type == 1: reset_tracker = true
 				wall.hit(direction)
 				if wall.type == 2:
+					timedout = true
+				if wall.type == 5 and transformer == Transform2D() * 100:
 					timedout = true
 	else:
 		target = direction * Constants.GRID_SIZE

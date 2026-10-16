@@ -27,15 +27,22 @@ func get_reflection(dir = Vector2(0,0)):
 	if type < 4:
 		return reflection
 	if type == 4:
-		print("reflecting 4")
 		if dir == reflection.x or dir == reflection.y:
-			print("t 4")
 			return Transform2D()
 			
 		else:
-			print("fake 4")
 			print(dir, reflection.x, reflection.y)
 			return Transform2D() * -1
+	if type == 5:
+		print("reflecting 5")
+		if dir == reflection.x or dir == reflection.y:
+			print("through 5")
+			return Transform2D()
+			
+		else:
+			print("fake 5")
+			print(dir, reflection.x, reflection.y)
+			return Transform2D() * 100
 			
 
 

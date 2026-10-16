@@ -26,6 +26,8 @@ func shoot(dir):
 		transformer = collider.get_reflection(dir)
 		if collider.type == 2:
 			return
+		if collider.type == 5 and transformer == Transform2D() * 100:
+			return
 		if collider.type == 3:
 			transformer = Transform2D()
 	if collider is Portal and collider.outside(dir) is Wall:

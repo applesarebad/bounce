@@ -2,7 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://sdp1ddhmapp6" path="res://scenes/walls/normal/hwall.tscn" id="1_baq20"]
 [ext_resource type="PackedScene" uid="uid://cjyihu0v6pywq" path="res://scenes/walls/oneway/uponly.tscn" id="2_vpxgl"]
+[ext_resource type="PackedScene" uid="uid://whe3fgijeylf" path="res://scenes/walls/laserway/downlaser.tscn" id="3_3510t"]
 [ext_resource type="PackedScene" uid="uid://drpvgbkkr2345" path="res://scenes/walls/breakable/h-break.tscn" id="3_g3kw4"]
+[ext_resource type="PackedScene" uid="uid://8krudt4ilemm" path="res://scenes/walls/laserway/uplaser.tscn" id="4_1sjdf"]
 [ext_resource type="PackedScene" uid="uid://hkpgksbegj54" path="res://scenes/walls/laser/h-laser.tscn" id="5_5upqf"]
 [ext_resource type="PackedScene" uid="uid://ifwxd4nwqdxs" path="res://scenes/walls/oneway/downonly.tscn" id="6_q1366"]
 [ext_resource type="PackedScene" uid="uid://lr474jo811kl" path="res://scenes/walls/seethrough/h-see.tscn" id="7_rh46q"]
@@ -14,6 +16,8 @@ scenes/5/scene = ExtResource("5_5upqf")
 scenes/7/scene = ExtResource("7_rh46q")
 scenes/9/scene = ExtResource("6_q1366")
 scenes/10/scene = ExtResource("2_vpxgl")
+scenes/11/scene = ExtResource("3_3510t")
+scenes/12/scene = ExtResource("4_1sjdf")
 
 [sub_resource type="TileSet" id="TileSet_dn385"]
 tile_size = Vector2i(64, 64)
