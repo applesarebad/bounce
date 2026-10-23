@@ -75,6 +75,7 @@ func track(node: Node2D) -> void:
 func release() -> void:
 	_tracked = null
 	_subject = player
+	player.shooting = false
 	_evaluate_region(true)
 
 

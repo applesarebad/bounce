@@ -160,10 +160,12 @@ func step():
 		)
 		await tween.finished
 
-
-	if not timedout:
+	
+	if not timedout and distance < 300:
 		step()
 	else:
+		if distance >= 300:
+			print("DISTANCE WARNING")
 		detonate.bind(collider).call()
 
 	$RichTextLabel.text = str(distance)
