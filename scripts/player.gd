@@ -2,6 +2,7 @@ extends Area2D
 
 const blob = preload("res://scenes/blob.tscn")
 var moving = false
+var shooting = false
 @export var speed = 500
 
 var _cancelled := false
@@ -15,8 +16,9 @@ func _process(delta):
 		shoot(direction)
 
 func shoot(dir):
-	if moving:
+	if moving or shooting:
 		return
+	shooting = true
 	var target = aim(dir)
 	var collider = null
 	var transformer = null
@@ -129,6 +131,9 @@ func move(dir):
 			return
 	snap_pos_to_grid(position)
 	print(is_on_ground())
+	if !is_on_ground():
+		destroy()
+	shooting = false
 	get_parent().save()
 	if World.instance:
 		World.instance.on_player_settled()
@@ -177,13 +182,19 @@ func fling(dir):
 				return
 	snap_pos_to_grid(position)
 	print(is_on_ground())
+	if !is_on_ground():
+		destroy()
+	shooting = false
 	get_parent().save()
 	if World.instance:
 		World.instance.on_player_settled()
+
+func destroy():
+	#global_position = Vector2(100000,100000)
+	pass
 
 func snap_pos_to_grid(pos: Vector2, grid_size: float = Constants.GRID_SIZE) -> Vector2:
 	return pos.snapped(Vector2(grid_size, grid_size))
 
 func is_on_ground() -> bool:
-	var cell := Vector2i((global_position / Constants.GRID_SIZE).floor())
-	return Groundcheck.ground.get_cell_source_id(cell) != -1
+	return Groundcheck.is_ground(global_position)
