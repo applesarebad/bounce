@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cprkit2tdieu2" path="res://scenes/walls/verts.tscn" id="4_xnubl"]
 [ext_resource type="PackedScene" uid="uid://dk21eugcnfu6w" path="res://scenes/walls/hors.tscn" id="5_65j4u"]
 [ext_resource type="PackedScene" uid="uid://khrix2wgdkvv" path="res://scenes/walls/ground.tscn" id="6_201hg"]
-[ext_resource type="PackedScene" uid="uid://qycwcam8adw0" path="res://scenes/player.tscn" id="7_pm1tc"]
 
 [node name="level" type="Node2D" unique_id=1521731232]
 script = ExtResource("1_p44bp")
@@ -34,11 +33,8 @@ position = Vector2(32, 0)
 tile_map_data = PackedByteArray("AAD9////AAAAAAAAAgD9/wAAAAAAAAAAAgD9/wEAAAAAAAAAAgD//wAAAAAAAAAAAgABAAAAAAAAAAAACAA=")
 
 [node name="Horizontals" parent="walls" unique_id=1339192763 instance=ExtResource("5_65j4u")]
-position = Vector2(1, 32)
 tile_map_data = PackedByteArray("AAAAAAMAAAAAAAAAAQABAAMAAAAAAAAAAQACAAMAAAAAAAAAAQAAAPz/AAAAAAAAAQABAPz/AAAAAAAAAQACAPz/AAAAAAAAAQD//wMAAAAAAAAAAwD//wQAAAAAAAAAAwD//wUAAAAAAAAABQD///z/AAAAAAAAAwD///v/AAAAAAAAAwD///r/AAAAAAAABQA=")
 
 [node name="Ground" parent="walls" unique_id=1895606570 instance=ExtResource("6_201hg")]
 z_index = -1
 tile_map_data = PackedByteArray("AAD+//3/AQABAAEAAAD+//7/AQABAAEAAAD+////AQABAAEAAAD+/wAAAQABAAEAAAD+/wEAAQABAAEAAAD+/wIAAQABAAEAAAD///3/AQABAAEAAAD///7/AQABAAEAAAD/////AQABAAEAAAD//wAAAQABAAEAAAD//wEAAQABAAEAAAD//wIAAQABAAEAAAAAAP3/AQABAAEAAAAAAP7/AQABAAEAAAAAAP//AQABAAEAAAAAAAAAAQABAAEAAAAAAAEAAQABAAEAAAAAAAIAAQABAAEAAAABAP3/AQABAAEAAAABAP7/AQABAAEAAAABAP//AQABAAEAAAABAAAAAQABAAEAAAABAAEAAQABAAEAAAABAAIAAQABAAEAAAACAP3/AQABAAEAAAACAP7/AQABAAEAAAACAP//AQABAAEAAAACAAAAAQABAAEAAAACAAEAAQABAAEAAAACAAIAAQABAAEAAAD+/wMAAQABAAEAAAD//wMAAQABAAEAAAAAAAMAAQABAAEAAAABAAMAAQABAAEAAAACAAMAAQABAAEAAAA=")
-
-[node name="Player" parent="." unique_id=82138595 instance=ExtResource("7_pm1tc")]

@@ -7,12 +7,45 @@
 [ext_resource type="PackedScene" uid="uid://ckevluqkosacc" path="res://levels/world1/level1-1.tscn" id="6_w7kh3"]
 [ext_resource type="PackedScene" uid="uid://bfnuty6ttvm26" path="res://scenes/walls/diagonals.tscn" id="7_dss4m"]
 [ext_resource type="PackedScene" uid="uid://c3lj4fqvyk8qr" path="res://levels/world1/level1-2.tscn" id="7_e3hyu"]
+[ext_resource type="PackedScene" uid="uid://udg75qua514v" path="res://levels/world1/level1-3.tscn" id="7_eo1xk"]
 [ext_resource type="PackedScene" uid="uid://cprkit2tdieu2" path="res://scenes/walls/verts.tscn" id="8_7t5mc"]
+[ext_resource type="PackedScene" uid="uid://cqepheggqkuyj" path="res://levels/world1/level1-4.tscn" id="8_18clu"]
 [ext_resource type="PackedScene" uid="uid://bo8176dsju8x8" path="res://levels/world1/level1-5.tscn" id="8_q5onr"]
 [ext_resource type="PackedScene" uid="uid://7h0oyqpct2u8" path="res://levels/world3/level3-4.tscn" id="9_jhx03"]
 [ext_resource type="PackedScene" uid="uid://dk21eugcnfu6w" path="res://scenes/walls/hors.tscn" id="9_lakw3"]
+[ext_resource type="PackedScene" uid="uid://bkq2wikn10lco" path="res://levels/world1/level1-6.tscn" id="10_4wdv8"]
 [ext_resource type="PackedScene" uid="uid://khrix2wgdkvv" path="res://scenes/walls/ground.tscn" id="10_pm21f"]
-[ext_resource type="PackedScene" uid="uid://c21ihvf71wl1n" path="res://levels/level0.tscn" id="11_e3hyu"]
+[ext_resource type="PackedScene" uid="uid://bhixonx6fibqh" path="res://levels/world1/level1-7.tscn" id="11_d46x8"]
+[ext_resource type="PackedScene" uid="uid://bapmg20xetx00" path="res://levels/world1/level1-8.tscn" id="12_3l05q"]
+[ext_resource type="PackedScene" uid="uid://dxmhradk8drw0" path="res://levels/world1/level1-9.tscn" id="13_x28ej"]
+[ext_resource type="PackedScene" uid="uid://c44hbr4llta47" path="res://levels/world2/level2-1.tscn" id="14_1jxku"]
+[ext_resource type="PackedScene" uid="uid://ds4ow1to3v74q" path="res://levels/world2/level2-2.tscn" id="15_1dgkn"]
+[ext_resource type="PackedScene" uid="uid://bb0nwo7f765s4" path="res://levels/world2/level2-3.tscn" id="16_e68xj"]
+[ext_resource type="PackedScene" uid="uid://b6rtsennb5n6p" path="res://levels/world2/level2-4.tscn" id="17_5hglh"]
+[ext_resource type="PackedScene" uid="uid://bfaips3xx34oq" path="res://levels/world2/level2-5.tscn" id="18_qg546"]
+[ext_resource type="PackedScene" uid="uid://cgdh1d570i7g4" path="res://levels/world2/level2-6.tscn" id="19_pf35h"]
+[ext_resource type="PackedScene" uid="uid://dbnbpldtyigay" path="res://levels/world2/level2-7.tscn" id="20_iexy4"]
+[ext_resource type="PackedScene" uid="uid://042jis2h7muw" path="res://levels/world3/level3-1.tscn" id="21_npbic"]
+[ext_resource type="PackedScene" uid="uid://l0120oh0ffol" path="res://levels/world3/level3-2.tscn" id="22_e6ckp"]
+[ext_resource type="PackedScene" uid="uid://chanxqprfwhb8" path="res://levels/world3/level3-3.tscn" id="23_mvg0v"]
+[ext_resource type="PackedScene" uid="uid://3ltm18sp8rel" path="res://levels/world3/level3-5.tscn" id="25_h3odw"]
+[ext_resource type="PackedScene" uid="uid://dmdegxp5u1gl3" path="res://levels/world4/level4-1.tscn" id="26_5hl1e"]
+[ext_resource type="PackedScene" uid="uid://b8dhxatwjhng0" path="res://levels/world4/level4-2.tscn" id="27_66tox"]
+[ext_resource type="PackedScene" uid="uid://drsq17mabceqs" path="res://levels/world4/level4-3.tscn" id="28_pq8jk"]
+[ext_resource type="PackedScene" uid="uid://dylvd2xmpx863" path="res://levels/world4/level4-4.tscn" id="29_q57r8"]
+[ext_resource type="PackedScene" uid="uid://j6q8ytfru8i0" path="res://levels/world4/level4-5.tscn" id="30_4kmvx"]
+[ext_resource type="PackedScene" uid="uid://fnao6mhpbraq" path="res://levels/world4/level4-6.tscn" id="31_4wdv8"]
+[ext_resource type="PackedScene" uid="uid://c4mp6prhpwhmf" path="res://levels/world4/level4-7.tscn" id="31_myjip"]
+[ext_resource type="PackedScene" uid="uid://dpqo4lvty86pw" path="res://levels/world5/level5-1.tscn" id="32_5nedk"]
+[ext_resource type="PackedScene" uid="uid://badcenlo5vm5k" path="res://levels/world5/level5-2.tscn" id="33_40xph"]
+[ext_resource type="PackedScene" uid="uid://ddopvej5838tp" path="res://levels/world5/level5-3.tscn" id="34_8lgfd"]
+[ext_resource type="PackedScene" uid="uid://cgc8r5obas2md" path="res://levels/world5/level5-4.tscn" id="35_dyafi"]
+[ext_resource type="PackedScene" uid="uid://dsdp3oceecf7m" path="res://levels/world5/level5-5.tscn" id="36_r5yoc"]
+[ext_resource type="PackedScene" uid="uid://dcl3tiqwna6vf" path="res://levels/world5/level5-6.tscn" id="37_1m1ue"]
+[ext_resource type="PackedScene" uid="uid://d0q2vfo3jhmy7" path="res://levels/world5/level5-7.tscn" id="38_ntuqo"]
+[ext_resource type="PackedScene" uid="uid://dj7kdsi8e00fv" path="res://levels/world5/level5-8.tscn" id="39_ca4ee"]
+[ext_resource type="PackedScene" uid="uid://54tfr4x7vcs4" path="res://levels/world5/level5-9.tscn" id="40_qaasp"]
+[ext_resource type="PackedScene" uid="uid://biphn5sg8ubmh" path="res://levels/world5/level5-10.tscn" id="41_1v02h"]
 
 [node name="World" type="Node2D" unique_id=1521731232 node_paths=PackedStringArray("player", "camera", "start_region")]
 script = ExtResource("1_w7kh3")
@@ -21,7 +54,7 @@ camera = NodePath("Camera2D")
 start_region = NodePath("regions/Node2D")
 
 [node name="Player" parent="." unique_id=721898401 instance=ExtResource("2_e3hyu")]
-position = Vector2(-32, -32)
+position = Vector2(864, 1056)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2017124467]
 position = Vector2(-512, -32)
@@ -35,20 +68,119 @@ script = ExtResource("4_jhx03")
 region_name = "test1"
 size_cells = Vector2i(1, 1)
 
-[node name="level" parent="regions" unique_id=1939097972 instance=ExtResource("11_e3hyu")]
-position = Vector2(-512, 64)
-
-[node name="level2" parent="regions" unique_id=1540849977 instance=ExtResource("6_w7kh3")]
+[node name="level-w1-1" parent="regions" unique_id=1478231406 instance=ExtResource("6_w7kh3")]
 position = Vector2(-192, -320)
 
-[node name="level3" parent="regions" unique_id=962978178 instance=ExtResource("7_e3hyu")]
+[node name="level-w1-2" parent="regions" unique_id=1230556074 instance=ExtResource("7_e3hyu")]
 position = Vector2(448, -128)
 
-[node name="level4" parent="regions" unique_id=2016804749 instance=ExtResource("8_q5onr")]
-position = Vector2(576, 320)
+[node name="level-w1-3" parent="regions" unique_id=1646894622 instance=ExtResource("7_eo1xk")]
+position = Vector2(512, 256)
 
-[node name="level5" parent="regions" unique_id=1273335357 instance=ExtResource("9_jhx03")]
-position = Vector2(-192, 192)
+[node name="level-w1-4" parent="regions" unique_id=725650721 instance=ExtResource("8_18clu")]
+position = Vector2(512, 704)
+
+[node name="level-w1-5" parent="regions" unique_id=546967246 instance=ExtResource("8_q5onr")]
+position = Vector2(640, 1216)
+
+[node name="level-w1-6" parent="regions" unique_id=151470153 instance=ExtResource("10_4wdv8")]
+position = Vector2(576, 1536)
+
+[node name="level-w1-7" parent="regions" unique_id=1964423394 instance=ExtResource("11_d46x8")]
+position = Vector2(768, 2496)
+
+[node name="level-w1-8" parent="regions" unique_id=662218892 instance=ExtResource("12_3l05q")]
+position = Vector2(-512, 2560)
+
+[node name="level-w1-9" parent="regions" unique_id=2022866752 instance=ExtResource("13_x28ej")]
+position = Vector2(-448, 3456)
+
+[node name="level-w2-1" parent="regions" unique_id=735161368 instance=ExtResource("14_1jxku")]
+position = Vector2(-256, 6080)
+
+[node name="level-w2-2" parent="regions" unique_id=529483563 instance=ExtResource("15_1dgkn")]
+position = Vector2(896, 6016)
+
+[node name="level-w2-3" parent="regions" unique_id=2057178826 instance=ExtResource("16_e68xj")]
+position = Vector2(640, 6848)
+
+[node name="level-w2-4" parent="regions" unique_id=1398299008 instance=ExtResource("17_5hglh")]
+position = Vector2(768, 7872)
+
+[node name="level-w2-5" parent="regions" unique_id=932769587 instance=ExtResource("18_qg546")]
+position = Vector2(-192, 7872)
+
+[node name="level-w2-6" parent="regions" unique_id=809073391 instance=ExtResource("19_pf35h")]
+position = Vector2(-512, 8832)
+
+[node name="level-w2-7" parent="regions" unique_id=571423364 instance=ExtResource("20_iexy4")]
+position = Vector2(896, 8768)
+
+[node name="level-w3-1" parent="regions" unique_id=828754613 instance=ExtResource("21_npbic")]
+position = Vector2(960, 12672)
+
+[node name="level-w3-2" parent="regions" unique_id=781120574 instance=ExtResource("22_e6ckp")]
+position = Vector2(448, 12608)
+
+[node name="level-w3-3" parent="regions" unique_id=1569384052 instance=ExtResource("23_mvg0v")]
+position = Vector2(-896, 12736)
+
+[node name="level-w3-4" parent="regions" unique_id=1924664262 instance=ExtResource("9_jhx03")]
+position = Vector2(-768, 13696)
+
+[node name="level-w3-5" parent="regions" unique_id=1555915576 instance=ExtResource("25_h3odw")]
+position = Vector2(-640, 14528)
+
+[node name="level-w4-1" parent="regions" unique_id=1061839963 instance=ExtResource("26_5hl1e")]
+position = Vector2(-1088, 18240)
+
+[node name="level-w4-2" parent="regions" unique_id=97172896 instance=ExtResource("27_66tox")]
+position = Vector2(-1536, 18240)
+
+[node name="level-w4-3" parent="regions" unique_id=207503236 instance=ExtResource("28_pq8jk")]
+position = Vector2(-2240, 18176)
+
+[node name="level-w4-4" parent="regions" unique_id=193901429 instance=ExtResource("29_q57r8")]
+position = Vector2(-2112, 18816)
+
+[node name="level-w4-5" parent="regions" unique_id=466806688 instance=ExtResource("30_4kmvx")]
+position = Vector2(-256, 18688)
+
+[node name="level-w4-6" parent="regions" unique_id=1936183334 instance=ExtResource("31_4wdv8")]
+position = Vector2(-1088, 19840)
+
+[node name="level-w4-7" parent="regions" unique_id=377895207 instance=ExtResource("31_myjip")]
+position = Vector2(-64, 19904)
+
+[node name="level-w5-1" parent="regions" unique_id=919033331 instance=ExtResource("32_5nedk")]
+position = Vector2(256, 22208)
+
+[node name="level-w5-2" parent="regions" unique_id=1301674290 instance=ExtResource("33_40xph")]
+position = Vector2(896, 22272)
+
+[node name="level-w5-3" parent="regions" unique_id=810568641 instance=ExtResource("34_8lgfd")]
+position = Vector2(2688, 22272)
+
+[node name="level-w5-4" parent="regions" unique_id=1670497553 instance=ExtResource("35_dyafi")]
+position = Vector2(832, 23808)
+
+[node name="level-w5-5" parent="regions" unique_id=1515666413 instance=ExtResource("36_r5yoc")]
+position = Vector2(2560, 23744)
+
+[node name="level-w5-6" parent="regions" unique_id=237792747 instance=ExtResource("37_1m1ue")]
+position = Vector2(2560, 25344)
+
+[node name="level-w5-7" parent="regions" unique_id=799880802 instance=ExtResource("38_ntuqo")]
+position = Vector2(4608, 23488)
+
+[node name="level-w5-8" parent="regions" unique_id=923210192 instance=ExtResource("39_ca4ee")]
+position = Vector2(4736, 25600)
+
+[node name="level-w5-9" parent="regions" unique_id=1109810479 instance=ExtResource("40_qaasp")]
+position = Vector2(5056, 27584)
+
+[node name="level-w5-10" parent="regions" unique_id=140379608 instance=ExtResource("41_1v02h")]
+position = Vector2(4928, 30144)
 
 [node name="Objects" type="Node2D" parent="." unique_id=107722677]
 

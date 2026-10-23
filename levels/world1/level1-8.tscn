@@ -33,7 +33,6 @@ position = Vector2(32, 0)
 tile_map_data = PackedByteArray(0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 0, 0, 8, 0)
 
 [node name="Horizontals" parent="walls" unique_id=1339192763 instance=ExtResource("5_qdw80")]
-position = Vector2(1, 32)
 tile_map_data = PackedByteArray(0, 0, 255, 255, 252, 255, 0, 0, 0, 0, 0, 0, 1, 0)
 
 [node name="Ground" parent="walls" unique_id=1895606570 instance=ExtResource("6_gs5bm")]

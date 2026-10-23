@@ -30,10 +30,9 @@ position = Vector2(192, 256)
 
 [node name="Verticals" parent="walls" unique_id=1292141254 instance=ExtResource("4_6bwys")]
 position = Vector2(32, 0)
-tile_map_data = PackedByteArray()
 
 [node name="Horizontals" parent="walls" unique_id=1339192763 instance=ExtResource("5_bx16j")]
-position = Vector2(1, 32)
+position = Vector2(0, 32)
 
 [node name="Ground" parent="walls" unique_id=1895606570 instance=ExtResource("6_ntihg")]
 z_index = -1

@@ -24,4 +24,5 @@ tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetScenesCollectionSource_ro5pr")
 
 [node name="Horizontals" type="TileMapLayer" unique_id=1292141254]
+position = Vector2(0, 32)
 tile_set = SubResource("TileSet_dn385")

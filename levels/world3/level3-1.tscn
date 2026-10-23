@@ -1,22 +1,22 @@
 [gd_scene format=4 uid="uid://042jis2h7muw"]
 
-[ext_resource type="Script" uid="uid://dl4xadlxcoix" path="res://scripts/level.gd" id="1_81dw1"]
-[ext_resource type="Script" uid="uid://cnu3u0ap25bvp" path="res://scripts/camera_region.gd" id="2_1ygfg"]
-[ext_resource type="PackedScene" uid="uid://b2pnw04i64jn7" path="res://scenes/walls/boxes/box.tscn" id="3_1ygfg"]
-[ext_resource type="PackedScene" uid="uid://bfnuty6ttvm26" path="res://scenes/walls/diagonals.tscn" id="3_y2dt1"]
-[ext_resource type="PackedScene" uid="uid://cprkit2tdieu2" path="res://scenes/walls/verts.tscn" id="4_fgy4e"]
-[ext_resource type="PackedScene" uid="uid://dk21eugcnfu6w" path="res://scenes/walls/hors.tscn" id="5_nu6ig"]
-[ext_resource type="PackedScene" uid="uid://khrix2wgdkvv" path="res://scenes/walls/ground.tscn" id="6_cyqc2"]
+[ext_resource type="Script" uid="uid://dl4xadlxcoix" path="res://scripts/level.gd" id="1_ha71l"]
+[ext_resource type="Script" uid="uid://cnu3u0ap25bvp" path="res://scripts/camera_region.gd" id="2_ek6ls"]
+[ext_resource type="PackedScene" uid="uid://b2pnw04i64jn7" path="res://scenes/walls/boxes/box.tscn" id="3_0nyqm"]
+[ext_resource type="PackedScene" uid="uid://bfnuty6ttvm26" path="res://scenes/walls/diagonals.tscn" id="4_jv7l4"]
+[ext_resource type="PackedScene" uid="uid://cprkit2tdieu2" path="res://scenes/walls/verts.tscn" id="5_bp2d6"]
+[ext_resource type="PackedScene" uid="uid://dk21eugcnfu6w" path="res://scenes/walls/hors.tscn" id="6_yu41g"]
+[ext_resource type="PackedScene" uid="uid://khrix2wgdkvv" path="res://scenes/walls/ground.tscn" id="7_8gnyb"]
 
 [node name="level" type="Node2D" unique_id=1521731232]
-script = ExtResource("1_81dw1")
+script = ExtResource("1_ha71l")
 
 [node name="regions" type="Node2D" parent="." unique_id=946235785]
 position = Vector2(192, 256)
 
 [node name="Node2D" type="Node2D" parent="regions" unique_id=1161473737]
 position = Vector2(-64, -256)
-script = ExtResource("2_1ygfg")
+script = ExtResource("2_ek6ls")
 region_name = "test1"
 size_cells = Vector2i(5, 5)
 spawn_cell = Vector2i(3, 2)
@@ -24,22 +24,21 @@ spawn_cell = Vector2i(3, 2)
 [node name="Objects" type="Node2D" parent="." unique_id=107722677]
 position = Vector2(192, 256)
 
-[node name="Box" parent="Objects" unique_id=1743474747 instance=ExtResource("3_1ygfg")]
+[node name="Box" parent="Objects" unique_id=1743474747 instance=ExtResource("3_0nyqm")]
 position = Vector2(32, -96)
 
 [node name="walls" type="Node2D" parent="." unique_id=2139643631]
 position = Vector2(192, 256)
 
-[node name="Diagonals" parent="walls" unique_id=657605503 instance=ExtResource("3_y2dt1")]
+[node name="Diagonals" parent="walls" unique_id=657605503 instance=ExtResource("4_jv7l4")]
 
-[node name="Verticals" parent="walls" unique_id=1292141254 instance=ExtResource("4_fgy4e")]
+[node name="Verticals" parent="walls" unique_id=1292141254 instance=ExtResource("5_bp2d6")]
 position = Vector2(32, 0)
 tile_map_data = PackedByteArray("AAADAAAAAAAAAAAAAgACAP//AAAAAAAAAgACAP3/AAAAAAAAAgA=")
 
-[node name="Horizontals" parent="walls" unique_id=1339192763 instance=ExtResource("5_nu6ig")]
-position = Vector2(1, 32)
+[node name="Horizontals" parent="walls" unique_id=1339192763 instance=ExtResource("6_yu41g")]
 tile_map_data = PackedByteArray("AAABAP//AAAAAAAAAQACAP//AAAAAAAAAQAAAPv/AAAAAAAAAQAAAAEAAAAAAAAAAQADAP3/AAAAAAAAAQACAP7/AAAAAAAAAQA=")
 
-[node name="Ground" parent="walls" unique_id=1895606570 instance=ExtResource("6_cyqc2")]
+[node name="Ground" parent="walls" unique_id=1895606570 instance=ExtResource("7_8gnyb")]
 z_index = -1
 tile_map_data = PackedByteArray("AAAAAP7/AQABAAAAAAAAAP//AQABAAAAAAAAAAAAAQABAAAAAAABAAAAAQABAAAAAAACAAAAAQABAAAAAAADAAAAAQABAAAAAAADAP//AQABAAAAAAADAP7/AQABAAAAAAACAP7/AQABAAAAAAAAAP3/AQABAAAAAAAAAPz/AQABAAAAAAD///3/AQABAAAAAAD+//3/AQABAAAAAAA=")

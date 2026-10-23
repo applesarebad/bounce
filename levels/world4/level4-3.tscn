@@ -1,23 +1,23 @@
 [gd_scene format=4 uid="uid://drsq17mabceqs"]
 
-[ext_resource type="Script" uid="uid://dl4xadlxcoix" path="res://scripts/level.gd" id="1_lxg3i"]
-[ext_resource type="Script" uid="uid://cnu3u0ap25bvp" path="res://scripts/camera_region.gd" id="2_4wj83"]
-[ext_resource type="PackedScene" uid="uid://336cfdxbw2c5" path="res://scenes/walls/bortals/portal.tscn" id="3_xxkvo"]
-[ext_resource type="PackedScene" uid="uid://yr5g3okh7qnc" path="res://scenes/walls/bortals/ortal.tscn" id="4_30vcx"]
-[ext_resource type="PackedScene" uid="uid://bfnuty6ttvm26" path="res://scenes/walls/diagonals.tscn" id="5_j6p4g"]
-[ext_resource type="PackedScene" uid="uid://cprkit2tdieu2" path="res://scenes/walls/verts.tscn" id="6_5q15a"]
-[ext_resource type="PackedScene" uid="uid://dk21eugcnfu6w" path="res://scenes/walls/hors.tscn" id="7_jplc8"]
-[ext_resource type="PackedScene" uid="uid://khrix2wgdkvv" path="res://scenes/walls/ground.tscn" id="8_ma40k"]
+[ext_resource type="Script" uid="uid://dl4xadlxcoix" path="res://scripts/level.gd" id="1_taion"]
+[ext_resource type="Script" uid="uid://cnu3u0ap25bvp" path="res://scripts/camera_region.gd" id="2_pp53l"]
+[ext_resource type="PackedScene" uid="uid://336cfdxbw2c5" path="res://scenes/walls/bortals/portal.tscn" id="3_ni344"]
+[ext_resource type="PackedScene" uid="uid://yr5g3okh7qnc" path="res://scenes/walls/bortals/ortal.tscn" id="4_hs4jt"]
+[ext_resource type="PackedScene" uid="uid://bfnuty6ttvm26" path="res://scenes/walls/diagonals.tscn" id="5_q6m7y"]
+[ext_resource type="PackedScene" uid="uid://cprkit2tdieu2" path="res://scenes/walls/verts.tscn" id="6_rvyri"]
+[ext_resource type="PackedScene" uid="uid://dk21eugcnfu6w" path="res://scenes/walls/hors.tscn" id="7_kdh1d"]
+[ext_resource type="PackedScene" uid="uid://khrix2wgdkvv" path="res://scenes/walls/ground.tscn" id="8_8ifyi"]
 
 [node name="level" type="Node2D" unique_id=1521731232]
-script = ExtResource("1_lxg3i")
+script = ExtResource("1_taion")
 
 [node name="regions" type="Node2D" parent="." unique_id=946235785]
 position = Vector2(192, 256)
 
 [node name="Node2D" type="Node2D" parent="regions" unique_id=1161473737]
 position = Vector2(-64, -192)
-script = ExtResource("2_4wj83")
+script = ExtResource("2_pp53l")
 region_name = "test1"
 size_cells = Vector2i(5, 5)
 spawn_cell = Vector2i(2, 2)
@@ -25,22 +25,22 @@ spawn_cell = Vector2i(2, 2)
 [node name="Objects" type="Node2D" parent="." unique_id=107722677]
 position = Vector2(192, 256)
 
-[node name="Portal" parent="Objects" unique_id=1703199332 node_paths=PackedStringArray("link") instance=ExtResource("3_xxkvo")]
+[node name="Portal" parent="Objects" unique_id=1703199332 node_paths=PackedStringArray("link") instance=ExtResource("3_ni344")]
 position = Vector2(-64, -32)
 rotation = 3.1415927
 link = NodePath("../Portal2")
 
-[node name="Portal2" parent="Objects" unique_id=215525879 node_paths=PackedStringArray("link") instance=ExtResource("3_xxkvo")]
+[node name="Portal2" parent="Objects" unique_id=215525879 node_paths=PackedStringArray("link") instance=ExtResource("3_ni344")]
 position = Vector2(96, 128)
 rotation = 1.5707964
 link = NodePath("../Portal")
 
-[node name="Portal3" parent="Objects" unique_id=2089204675 node_paths=PackedStringArray("link") instance=ExtResource("4_30vcx")]
+[node name="Portal3" parent="Objects" unique_id=2089204675 node_paths=PackedStringArray("link") instance=ExtResource("4_hs4jt")]
 position = Vector2(160, -192)
 rotation = 4.712389
 link = NodePath("../Portal4")
 
-[node name="Portal4" parent="Objects" unique_id=788477099 node_paths=PackedStringArray("link") instance=ExtResource("4_30vcx")]
+[node name="Portal4" parent="Objects" unique_id=788477099 node_paths=PackedStringArray("link") instance=ExtResource("4_hs4jt")]
 position = Vector2(96, -192)
 rotation = 4.712389
 link = NodePath("../Portal3")
@@ -48,15 +48,14 @@ link = NodePath("../Portal3")
 [node name="walls" type="Node2D" parent="." unique_id=2139643631]
 position = Vector2(192, 256)
 
-[node name="Diagonals" parent="walls" unique_id=657605503 instance=ExtResource("5_j6p4g")]
+[node name="Diagonals" parent="walls" unique_id=657605503 instance=ExtResource("5_q6m7y")]
 
-[node name="Verticals" parent="walls" unique_id=1292141254 instance=ExtResource("6_5q15a")]
+[node name="Verticals" parent="walls" unique_id=1292141254 instance=ExtResource("6_rvyri")]
 position = Vector2(32, 0)
 
-[node name="Horizontals" parent="walls" unique_id=1339192763 instance=ExtResource("7_jplc8")]
-position = Vector2(1, 32)
+[node name="Horizontals" parent="walls" unique_id=1339192763 instance=ExtResource("7_kdh1d")]
 tile_map_data = PackedByteArray("AAABAP7/AAAAAAAABwA=")
 
-[node name="Ground" parent="walls" unique_id=1895606570 instance=ExtResource("8_ma40k")]
+[node name="Ground" parent="walls" unique_id=1895606570 instance=ExtResource("8_8ifyi")]
 z_index = -1
 tile_map_data = PackedByteArray("AAAAAP7/AQABAAAAAAAAAP//AQABAAAAAAAAAAAAAQABAAAAAAABAAAAAQABAAAAAAACAAAAAQABAAAAAAACAP//AQABAAAAAAACAP7/AQABAAAAAAABAP7/AQABAAAAAAABAP//AQABAAAAAAA=")
