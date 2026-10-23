@@ -1,4 +1,4 @@
 extends TileMapLayer
 
-func _ready() -> void:
-	Groundcheck.ground = self
+func _ready():
+	add_to_group("ground")

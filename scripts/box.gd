@@ -109,9 +109,11 @@ func move(dir, speed):
 		var tween = create_tween()
 		tween.tween_property(self, "position", position + Constants.GRID_SIZE*dir, Constants.GRID_SIZE/speed)
 		await tween.finished
+	
 	print("box: " + str(is_on_ground()))
+	if !is_on_ground():
+		destroy()
 
 
 func is_on_ground() -> bool:
-	var cell := Vector2i((global_position / Constants.GRID_SIZE).floor())
-	return Groundcheck.ground.get_cell_source_id(cell) != -1
+	return Groundcheck.is_ground(global_position)
