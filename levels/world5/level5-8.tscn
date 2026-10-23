@@ -1,0 +1,66 @@
+[gd_scene format=4 uid="uid://dj7kdsi8e00fv"]
+
+[ext_resource type="Script" uid="uid://dl4xadlxcoix" path="res://scripts/level.gd" id="1_jjern"]
+[ext_resource type="Script" uid="uid://cnu3u0ap25bvp" path="res://scripts/camera_region.gd" id="2_ww8m7"]
+[ext_resource type="PackedScene" uid="uid://336cfdxbw2c5" path="res://scenes/walls/bortals/portal.tscn" id="3_ww8m7"]
+[ext_resource type="PackedScene" uid="uid://yr5g3okh7qnc" path="res://scenes/walls/bortals/ortal.tscn" id="4_6215y"]
+[ext_resource type="PackedScene" uid="uid://b2pnw04i64jn7" path="res://scenes/walls/boxes/box.tscn" id="5_mlnu2"]
+[ext_resource type="PackedScene" uid="uid://bfnuty6ttvm26" path="res://scenes/walls/diagonals.tscn" id="5_ua3up"]
+[ext_resource type="PackedScene" uid="uid://cprkit2tdieu2" path="res://scenes/walls/verts.tscn" id="6_yj5t8"]
+[ext_resource type="PackedScene" uid="uid://dk21eugcnfu6w" path="res://scenes/walls/hors.tscn" id="7_h6ujg"]
+[ext_resource type="PackedScene" uid="uid://khrix2wgdkvv" path="res://scenes/walls/ground.tscn" id="8_5llih"]
+
+[node name="level" type="Node2D" unique_id=1521731232]
+script = ExtResource("1_jjern")
+
+[node name="regions" type="Node2D" parent="." unique_id=946235785]
+position = Vector2(192, 256)
+
+[node name="Node2D" type="Node2D" parent="regions" unique_id=1161473737]
+position = Vector2(64, 0)
+script = ExtResource("2_ww8m7")
+region_name = "test1"
+size_cells = Vector2i(11, 8)
+spawn_cell = Vector2i(1, 1)
+
+[node name="Objects" type="Node2D" parent="." unique_id=107722677]
+position = Vector2(192, 256)
+
+[node name="Portal" parent="Objects" unique_id=1703199332 node_paths=PackedStringArray("link") instance=ExtResource("3_ww8m7")]
+position = Vector2(416, 384)
+rotation = 1.5707964
+link = NodePath("../Portal2")
+
+[node name="Portal2" parent="Objects" unique_id=2039350703 node_paths=PackedStringArray("link") instance=ExtResource("3_ww8m7")]
+position = Vector2(416, 0)
+rotation = 4.712389
+link = NodePath("../Portal")
+
+[node name="Portal3" parent="Objects" unique_id=1895863327 node_paths=PackedStringArray("link") instance=ExtResource("4_6215y")]
+position = Vector2(672, 384)
+rotation = 1.5707964
+link = NodePath("../Portal4")
+
+[node name="Portal4" parent="Objects" unique_id=1805931569 node_paths=PackedStringArray("link") instance=ExtResource("4_6215y")]
+position = Vector2(768, 96)
+link = NodePath("../Portal3")
+
+[node name="Box" parent="Objects" unique_id=1743474747 instance=ExtResource("5_mlnu2")]
+position = Vector2(288, 224)
+
+[node name="walls" type="Node2D" parent="." unique_id=2139643631]
+position = Vector2(192, 256)
+
+[node name="Diagonals" parent="walls" unique_id=657605503 instance=ExtResource("5_ua3up")]
+tile_map_data = PackedByteArray("AAAKAAAAAAAAAAAAAQAGAAMAAAAAAAAAAwA=")
+
+[node name="Verticals" parent="walls" unique_id=1292141254 instance=ExtResource("6_yj5t8")]
+position = Vector2(32, 0)
+tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAADAADAAEAAAAAAAAABgAMAAAAAAAAAAAABgAMAAEAAAAAAAAABgAMAAIAAAAAAAAABgAMAAMAAAAAAAAABgAMAAQAAAAAAAAABgAMAAUAAAAAAAAABgAMAP//AAAAAAAABgAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAAgAAAAMAAAAAAAAAAgAAAAQAAAAAAAAAAgAAAAUAAAAAAAAAAgALAAIAAAAAAAAAAgALAAMAAAAAAAAAAgALAAQAAAAAAAAAAgALAAUAAAAAAAAAAgALAAAAAAAAAAAAAgACAAEAAAAAAAAAAgAGAAcAAAAAAAAAAgAEAAYAAAAAAAAAAgA=")
+
+[node name="Horizontals" parent="walls" unique_id=1339192763 instance=ExtResource("7_h6ujg")]
+tile_map_data = PackedByteArray("AAABAAUAAAAAAAAAAQACAAUAAAAAAAAAAQADAAUAAAAAAAAAAQAEAAUAAAAAAAAAAQAFAAUAAAAAAAAAAQAHAAUAAAAAAAAAAQAIAAUAAAAAAAAAAQAJAAUAAAAAAAAAAQALAAUAAAAAAAAAAQALAP//AAAAAAAAAQAKAP//AAAAAAAAAQAJAP//AAAAAAAAAQAIAP//AAAAAAAAAQAHAP//AAAAAAAAAQAFAP//AAAAAAAAAQAEAP//AAAAAAAAAQADAP//AAAAAAAAAQABAP//AAAAAAAAAQACAP//AAAAAAAACwADAP7/AAAAAAAABQAEAP7/AAAAAAAABQAFAP7/AAAAAAAABQAGAP7/AAAAAAAABQAHAP7/AAAAAAAABQAIAP7/AAAAAAAABQAJAP7/AAAAAAAABQAKAP7/AAAAAAAABQALAP7/AAAAAAAABQAMAP7/AAAAAAAABQACAAIAAAAAAAAABQACAAEAAAAAAAAAAQAKAAMAAAAAAAAACQA=")
+
+[node name="Ground" parent="walls" unique_id=1895606570 instance=ExtResource("8_5llih")]
+z_index = -1
+tile_map_data = PackedByteArray("AAABAAIAAQABAAAAAAABAAMAAQABAAAAAAABAAQAAQABAAAAAAABAAUAAQABAAAAAAACAAIAAQABAAAAAAACAAMAAQABAAAAAAACAAQAAQABAAAAAAACAAUAAQABAAAAAAADAAIAAQABAAAAAAADAAMAAQABAAAAAAADAAQAAQABAAAAAAADAAUAAQABAAAAAAAEAAIAAQABAAAAAAAEAAMAAQABAAAAAAAEAAQAAQABAAAAAAAEAAUAAQABAAAAAAAFAAIAAQABAAAAAAAFAAMAAQABAAAAAAAFAAQAAQABAAAAAAAFAAUAAQABAAAAAAAGAAIAAQABAAAAAAAGAAMAAQABAAAAAAAGAAQAAQABAAAAAAAGAAUAAQABAAAAAAAHAAIAAQABAAAAAAAHAAMAAQABAAAAAAAHAAQAAQABAAAAAAAHAAUAAQABAAAAAAAIAAIAAQABAAAAAAAIAAMAAQABAAAAAAAIAAQAAQABAAAAAAAIAAUAAQABAAAAAAAJAAIAAQABAAAAAAAJAAMAAQABAAAAAAAJAAQAAQABAAAAAAAJAAUAAQABAAAAAAAKAAIAAQABAAAAAAAKAAMAAQABAAAAAAAKAAQAAQABAAAAAAAKAAUAAQABAAAAAAABAAAAAQABAAAAAAABAAEAAQABAAAAAAACAAAAAQABAAAAAAACAAEAAQABAAAAAAADAAAAAQABAAAAAAADAAEAAQABAAAAAAAEAAAAAQABAAAAAAAEAAEAAQABAAAAAAAFAAAAAQABAAAAAAAFAAEAAQABAAAAAAAGAAAAAQABAAAAAAAGAAEAAQABAAAAAAAHAAAAAQABAAAAAAAHAAEAAQABAAAAAAAIAAAAAQABAAAAAAAIAAEAAQABAAAAAAAJAAAAAQABAAAAAAAJAAEAAQABAAAAAAAKAAAAAQABAAAAAAAKAAEAAQABAAAAAAALAAEAAQABAAAAAAALAAIAAQABAAAAAAALAAMAAQABAAAAAAALAAQAAQABAAAAAAALAAUAAQABAAAAAAALAAAAAQABAAAAAAAFAAYAAQABAAAAAAAGAAYAAQABAAAAAAAHAAYAAQABAAAAAAAHAAcAAQABAAAAAAAIAAcAAQABAAAAAAAJAAcAAQABAAAAAAAKAAcAAQABAAAAAAAKAAgAAQABAAAAAAA=")
