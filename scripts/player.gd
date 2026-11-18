@@ -72,15 +72,11 @@ func _on_body_entered(dir, distance):
 	else:
 		fling(dir)
 
-# stops whatever move()/fling() is mid-flight. kill()ing a tween alone won't
-# wake up an `await tween.finished` sitting on it, so wait_tween() below polls
-# this flag instead and bails itself. call this, then apply your undo snapshot.
 func stop_movement() -> void:
 	_cancelled = true
 	moving = false
+	shooting = false
 
-# swap-in for `await tween.finished` everywhere below. returns early (and kills
-# the tween) if stop_movement() fires while we're waiting.
 func wait_tween(tween: Tween) -> void:
 	while tween.is_valid() and tween.is_running() and not _cancelled:
 		await get_tree().process_frame

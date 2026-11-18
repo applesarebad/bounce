@@ -6,9 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dbbj6tn53ql1t" path="res://assets/wall/Untitled_Artwork-3 (4).png" id="4_htslu"]
 [ext_resource type="Texture2D" uid="uid://d2nsmf5241iot" path="res://assets/wall/Untitled_Artwork-4 (4).png" id="5_aqmw3"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_rbq2b"]
-a = Vector2(0, -32)
-b = Vector2(0, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3efo3"]
+size = Vector2(4.2426414, 55.154335)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x38nd"]
 animations = [{
@@ -37,7 +36,8 @@ reflection = Transform2D(0, -1, -1, 0, 0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1819060233]
 rotation = 0.7853982
-shape = SubResource("SegmentShape2D_rbq2b")
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_3efo3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=294902620]
 rotation = 0.7853982

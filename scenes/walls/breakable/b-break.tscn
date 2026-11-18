@@ -3,10 +3,6 @@
 [ext_resource type="Script" uid="uid://bgyct82hbnj32" path="res://scripts/wall.gd" id="1_1f2ym"]
 [ext_resource type="Texture2D" uid="uid://so71lnmahlcx" path="res://assets/icon.svg" id="2_mmdqv"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_rbq2b"]
-a = Vector2(0, -32)
-b = Vector2(0, 32)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_x38nd"]
 animations = [{
 "frames": [{
@@ -18,18 +14,22 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jl2gl"]
+size = Vector2(4.2426414, 55.154335)
+
 [node name="Bwall" type="Area2D" unique_id=462918278]
 script = ExtResource("1_1f2ym")
 type = 1
 diagonal = true
 reflection = Transform2D(0, -1, -1, 0, 0, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1819060233]
-rotation = 0.7853982
-shape = SubResource("SegmentShape2D_rbq2b")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=294902620]
 modulate = Color(0, 0.9529412, 0.007843138, 1)
 rotation = 0.7853982
 scale = Vector2(0.05, 0.5)
 sprite_frames = SubResource("SpriteFrames_x38nd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=898940328]
+rotation = -2.3561945
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_jl2gl")

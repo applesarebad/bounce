@@ -54,7 +54,7 @@ camera = NodePath("Camera2D")
 start_region = NodePath("regions/Node2D")
 
 [node name="Player" parent="." unique_id=721898401 instance=ExtResource("2_e3hyu")]
-position = Vector2(864, 1056)
+position = Vector2(864, 992)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2017124467]
 position = Vector2(-512, -32)
