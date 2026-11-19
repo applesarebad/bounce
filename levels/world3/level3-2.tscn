@@ -29,7 +29,7 @@ position = Vector2(192, 256)
 position = Vector2(160, -32)
 
 [node name="Box2" parent="Objects" unique_id=1780867625 instance=ExtResource("4_iw67v")]
-position = Vector2(160, 32)
+position = Vector2(224, 32)
 
 [node name="walls" type="Node2D" parent="." unique_id=2139643631]
 position = Vector2(192, 256)
@@ -41,7 +41,7 @@ position = Vector2(32, 0)
 tile_map_data = PackedByteArray("AAAEAAAAAAAAAAAAAgAEAP//AAAAAAAAAgD9//7/AAAAAAAAAgD9////AAAAAAAAAgA=")
 
 [node name="Horizontals" parent="walls" unique_id=1339192763 instance=ExtResource("7_olqxi")]
-tile_map_data = PackedByteArray("AAACAP7/AAAAAAAAAQD+/wAAAAAAAAAAAQD//wAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAAQACAAAAAAAAAAAAAQADAAAAAAAAAAAAAQAEAAAAAAAAAAAAAQD+//7/AAAAAAAAAQD///7/AAAAAAAAAQAAAP7/AAAAAAAAAQABAP7/AAAAAAAAAQAEAPz/AAAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAACAP7/AAAAAAAAAQD+/wAAAAAAAAAAAQD//wAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAAQACAAAAAAAAAAAAAQADAAAAAAAAAAAAAQAEAAAAAAAAAAAAAQD+//7/AAAAAAAAAQD///7/AAAAAAAAAQAAAP7/AAAAAAAAAQABAP7/AAAAAAAAAQAEAPz/AAAAAAAAAQADAPz/AAAAAAAAAQA=")
 
 [node name="Ground" parent="walls" unique_id=1895606570 instance=ExtResource("8_yix8j")]
 z_index = -1

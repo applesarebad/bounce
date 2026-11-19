@@ -14,11 +14,11 @@ script = ExtResource("1_vfxkj")
 position = Vector2(192, 256)
 
 [node name="Node2D" type="Node2D" parent="regions" unique_id=1161473737]
-position = Vector2(-192, -256)
+position = Vector2(-192, -192)
 script = ExtResource("2_ecy41")
 region_name = "test1"
-size_cells = Vector2i(7, 6)
-spawn_cell = Vector2i(6, 2)
+size_cells = Vector2i(7, 4)
+spawn_cell = Vector2i(6, 1)
 
 [node name="Objects" type="Node2D" parent="." unique_id=107722677]
 position = Vector2(192, 256)
@@ -27,15 +27,15 @@ position = Vector2(192, 256)
 position = Vector2(192, 256)
 
 [node name="Diagonals" parent="walls" unique_id=657605503 instance=ExtResource("3_rbffp")]
-tile_map_data = PackedByteArray("AAD+/wAAAAAAAAAAAQD9/wAAAAAAAAAAAgA=")
+tile_map_data = PackedByteArray("AAD+/wEAAAAAAAAAAQD9/wEAAAAAAAAAAgA=")
 
 [node name="Verticals" parent="walls" unique_id=1292141254 instance=ExtResource("4_kw3te")]
 position = Vector2(32, 0)
-tile_map_data = PackedByteArray("AAACAPz/AAAAAAAAAgACAP3/AAAAAAAAAgADAPz/AAAAAAAAAgADAP3/AAAAAAAAAgADAP7/AAAAAAAAAgD9//7/AAAAAAAAAgD9////AAAAAAAAAgACAAAAAAAAAAAAAgA=")
+tile_map_data = PackedByteArray("AAACAPz/AAAAAAAAAgACAP3/AAAAAAAAAgADAPz/AAAAAAAAAgADAP3/AAAAAAAAAgADAP7/AAAAAAAAAgD9//7/AAAAAAAAAgD9////AAAAAAAAAgACAAAAAAAAAAAAAgD9/wAAAAAAAAAAAgADAP//AAAAAAAAAgADAAAAAAAAAAAAAgA=")
 
 [node name="Horizontals" parent="walls" unique_id=1339192763 instance=ExtResource("5_r1u2u")]
-tile_map_data = PackedByteArray("AAD//wAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAD//wAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAAQD+/wAAAAAAAAAAAQD/////AAAAAAAAAQACAP3/AAAAAAAAAQA=")
 
 [node name="Ground" parent="walls" unique_id=1895606570 instance=ExtResource("6_hrwi3")]
 z_index = -1
-tile_map_data = PackedByteArray("AAD+/wAAAQABAAEAAAD///7/AQABAAEAAAD/////AQABAAEAAAD//wAAAQABAAEAAAAAAP7/AQABAAEAAAAAAAAAAQABAAEAAAABAP7/AQABAAEAAAABAAAAAQABAAEAAAACAP7/AQABAAEAAAACAAAAAQABAAEAAAADAP7/AQABAAEAAAD9/wAAAQABAAEAAAD+//7/AQABAAEAAAD+////AQABAAEAAAACAAEAAQABAAEAAAADAPz/AQABAAEAAAADAP3/AQABAAEAAAA=")
+tile_map_data = PackedByteArray("AAD+/wAAAQABAAEAAAD///7/AQABAAEAAAD//wAAAQABAAEAAAAAAP7/AQABAAEAAAAAAAAAAQABAAEAAAABAP7/AQABAAEAAAABAAAAAQABAAEAAAACAP7/AQABAAEAAAACAAAAAQABAAEAAAADAP7/AQABAAEAAAD9/wAAAQABAAEAAAD+////AQABAAEAAAACAAEAAQABAAEAAAADAPz/AQABAAEAAAADAP3/AQABAAEAAAD/////AQABAAEAAAA=")
