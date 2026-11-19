@@ -26,9 +26,12 @@ func shoot(dir):
 		collider = $ray.get_collider()
 	if collider != null and collider is Wall:
 		transformer = collider.get_reflection(dir)
+		collider.hit(dir)
 		if collider.type == 2:
+			shooting = false
 			return
 		if collider.type == 5 and transformer == Transform2D() * 100:
+			shooting = false
 			return
 		if collider.type == 3:
 			transformer = Transform2D()
@@ -66,7 +69,7 @@ func aim(dir):
 	return target
 
 func _on_body_entered(dir, distance):
-	print(dir)
+	print(distance)
 	if distance < 20:
 		move(dir)
 	else:

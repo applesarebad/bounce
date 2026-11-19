@@ -2,11 +2,11 @@ class_name World
 extends Node2D
 
 ##   World (world.gd)
-##   ├── TileMapLayers (ground / walls-v / walls-h / walls-diag)
-##   ├── Regions        <- CameraRegion nodes go here
-##   ├── Objects        <- crates, logs, breakable walls
-##   ├── Player
-##   └── WorldCamera    (world_camera.gd)
+##   - TileMapLayers 
+##   - Regions        
+##   - Objects        
+##   - Player
+##   - WorldCamera    
 
 enum ProjectileFraming {
 	NEVER,          

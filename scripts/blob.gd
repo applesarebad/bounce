@@ -4,9 +4,10 @@ var direction: Vector2
 var grid_pos: Vector2
 var distance: int = 0
 var timedout: bool = false
+var important: bool = false
 var ray: RayCast2D
 
-@export var speed: float = 2000
+@export var speed: float = 1000
 
 
 
@@ -82,8 +83,11 @@ func step():
 					target = direction * ((Constants.GRID_SIZE/2) if portaling else Constants.GRID_SIZE)
 				if transformer != Transform2D() * 100:   # the laserway sentinel isn't a real reflection, don't apply it
 					direction *= transformer
-				if wall.type == 1: reset_tracker = true
+				if wall.type == 1: 
+					reset_tracker = true
+					important = true
 				wall.hit(direction)
+					
 				if wall.type == 2:
 					timedout = true
 				if wall.type == 5 and transformer == Transform2D() * 100:
@@ -96,7 +100,7 @@ func step():
 	if reset_tracker:
 		reset_loop_tracking()
 	if check_loop(entry_cell, entry_dir, loop_hits):
-		get_parent().get_parent().save()
+		important = true
 		detonate()
 		return
 		
@@ -212,10 +216,14 @@ func check_loop(entry_cell: Vector2i, entry_dir: Vector2, hits: Array) -> bool:
 
 
 func detonate(collider = null):
+	
 	if World.instance:
 		World.instance.release()
 	if collider and collider.has_method("_on_body_entered"):
 		collider._on_body_entered(direction, distance)
+	else:
+		if important:
+			get_parent().get_parent().save()
 	queue_free()
 
 func is_active():
