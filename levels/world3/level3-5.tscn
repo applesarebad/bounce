@@ -29,7 +29,7 @@ position = Vector2(192, 256)
 position = Vector2(160, -160)
 
 [node name="Box2" parent="Objects" unique_id=1397141306 instance=ExtResource("4_ac6br")]
-position = Vector2(160, 160)
+position = Vector2(160, 96)
 
 [node name="walls" type="Node2D" parent="." unique_id=2139643631]
 position = Vector2(192, 256)

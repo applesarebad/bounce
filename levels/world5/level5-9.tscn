@@ -29,7 +29,7 @@ position = Vector2(0, 704)
 script = ExtResource("2_q5grm")
 mode = 1
 region_name = "test1"
-size_cells = Vector2i(12, 15)
+size_cells = Vector2i(12, 30)
 spawn_cell = Vector2i(5, 8)
 view_height_cells = 9.0
 
