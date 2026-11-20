@@ -54,10 +54,10 @@ camera = NodePath("Camera2D")
 start_region = NodePath("regions/Node2D")
 
 [node name="Player" parent="." unique_id=721898401 instance=ExtResource("2_e3hyu")]
-position = Vector2(864, 992)
+position = Vector2(1760, 23968)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2017124467]
-position = Vector2(-512, -32)
+position = Vector2(-832, -32)
 script = ExtResource("3_q5onr")
 
 [node name="regions" type="Node2D" parent="." unique_id=946235785]
@@ -69,10 +69,10 @@ region_name = "test1"
 size_cells = Vector2i(1, 1)
 
 [node name="level-w1-1" parent="regions" unique_id=1478231406 instance=ExtResource("6_w7kh3")]
-position = Vector2(-192, -320)
+position = Vector2(-192, -256)
 
 [node name="level-w1-2" parent="regions" unique_id=1230556074 instance=ExtResource("7_e3hyu")]
-position = Vector2(448, -128)
+position = Vector2(448, -64)
 
 [node name="level-w1-3" parent="regions" unique_id=1646894622 instance=ExtResource("7_eo1xk")]
 position = Vector2(512, 256)
@@ -86,101 +86,333 @@ position = Vector2(640, 1216)
 [node name="level-w1-6" parent="regions" unique_id=151470153 instance=ExtResource("10_4wdv8")]
 position = Vector2(576, 1536)
 
+[node name="follow7" type="Node2D" parent="regions" unique_id=506195840]
+position = Vector2(704, 2048)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(9, 15)
+view_height_cells = 8.0
+
 [node name="level-w1-7" parent="regions" unique_id=1964423394 instance=ExtResource("11_d46x8")]
-position = Vector2(768, 2496)
+position = Vector2(768, 3008)
+
+[node name="follow5" type="Node2D" parent="regions" unique_id=30718390]
+position = Vector2(320, 3008)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(8, 8)
+view_height_cells = 8.0
 
 [node name="level-w1-8" parent="regions" unique_id=662218892 instance=ExtResource("12_3l05q")]
-position = Vector2(-512, 2560)
+position = Vector2(-512, 3072)
+
+[node name="follow6" type="Node2D" parent="regions" unique_id=255101241]
+position = Vector2(-1344, 3008)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(12, 8)
+view_height_cells = 8.0
 
 [node name="level-w1-9" parent="regions" unique_id=2022866752 instance=ExtResource("13_x28ej")]
-position = Vector2(-448, 3456)
+position = Vector2(-1856, 2944)
 
 [node name="level-w2-1" parent="regions" unique_id=735161368 instance=ExtResource("14_1jxku")]
-position = Vector2(-256, 6080)
+position = Vector2(-1664, 5568)
+
+[node name="follow4" type="Node2D" parent="regions" unique_id=433743088]
+position = Vector2(-1088, 5504)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(8, 8)
+view_height_cells = 8.0
 
 [node name="level-w2-2" parent="regions" unique_id=529483563 instance=ExtResource("15_1dgkn")]
-position = Vector2(896, 6016)
+position = Vector2(-512, 5504)
+
+[node name="follow8" type="Node2D" parent="regions" unique_id=654038578]
+position = Vector2(-576, 6016)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(5, 5)
+view_height_cells = 8.0
 
 [node name="level-w2-3" parent="regions" unique_id=2057178826 instance=ExtResource("16_e68xj")]
-position = Vector2(640, 6848)
+position = Vector2(-768, 6336)
 
 [node name="level-w2-4" parent="regions" unique_id=1398299008 instance=ExtResource("17_5hglh")]
-position = Vector2(768, 7872)
+position = Vector2(-640, 7360)
 
 [node name="level-w2-5" parent="regions" unique_id=932769587 instance=ExtResource("18_qg546")]
-position = Vector2(-192, 7872)
+position = Vector2(-1088, 7360)
+
+[node name="follow3" type="Node2D" parent="regions" unique_id=1543967837]
+position = Vector2(-1152, 6336)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(5, 16)
+view_height_cells = 10.0
+
+[node name="follow9" type="Node2D" parent="regions" unique_id=1045267014]
+position = Vector2(-1152, 8000)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(5, 9)
+view_height_cells = 10.0
 
 [node name="level-w2-6" parent="regions" unique_id=809073391 instance=ExtResource("19_pf35h")]
-position = Vector2(-512, 8832)
+position = Vector2(-1408, 8512)
+
+[node name="follow2" type="Node2D" parent="regions" unique_id=889485678]
+position = Vector2(-576, 8576)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(9, 9)
+view_height_cells = 11.0
 
 [node name="level-w2-7" parent="regions" unique_id=571423364 instance=ExtResource("20_iexy4")]
-position = Vector2(896, 8768)
+position = Vector2(-64, 8448)
+
+[node name="follow10" type="Node2D" parent="regions" unique_id=641783986]
+position = Vector2(0, 9216)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(9, 48)
+view_height_cells = 11.0
 
 [node name="level-w3-1" parent="regions" unique_id=828754613 instance=ExtResource("21_npbic")]
-position = Vector2(960, 12672)
+position = Vector2(0, 12352)
 
 [node name="level-w3-2" parent="regions" unique_id=781120574 instance=ExtResource("22_e6ckp")]
-position = Vector2(448, 12608)
+position = Vector2(-512, 12288)
+
+[node name="follow11" type="Node2D" parent="regions" unique_id=227583252]
+position = Vector2(-1216, 12352)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(12, 7)
+view_height_cells = 7.0
 
 [node name="level-w3-3" parent="regions" unique_id=1569384052 instance=ExtResource("23_mvg0v")]
-position = Vector2(-896, 12736)
+position = Vector2(-1856, 12416)
+
+[node name="follow12" type="Node2D" parent="regions" unique_id=1337902292]
+position = Vector2(-1664, 12800)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(5, 9)
+view_height_cells = 12.0
 
 [node name="level-w3-4" parent="regions" unique_id=1924664262 instance=ExtResource("9_jhx03")]
-position = Vector2(-768, 13696)
+position = Vector2(-1728, 13376)
+
+[node name="follow13" type="Node2D" parent="regions" unique_id=1269722455]
+position = Vector2(-1152, 13952)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(5, 10)
+view_height_cells = 8.0
 
 [node name="level-w3-5" parent="regions" unique_id=1555915576 instance=ExtResource("25_h3odw")]
-position = Vector2(-640, 14528)
+position = Vector2(-1600, 14592)
+
+[node name="follow14" type="Node2D" parent="regions" unique_id=2035103132]
+position = Vector2(-1600, 15104)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(5, 45)
+view_height_cells = 7.0
 
 [node name="level-w4-1" parent="regions" unique_id=1061839963 instance=ExtResource("26_5hl1e")]
-position = Vector2(-1088, 18240)
+position = Vector2(-2048, 17920)
 
 [node name="level-w4-2" parent="regions" unique_id=97172896 instance=ExtResource("27_66tox")]
-position = Vector2(-1536, 18240)
+position = Vector2(-2496, 17920)
+
+[node name="follow15" type="Node2D" parent="regions" unique_id=1640949062]
+position = Vector2(-2752, 17920)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(6, 5)
+view_height_cells = 7.0
 
 [node name="level-w4-3" parent="regions" unique_id=207503236 instance=ExtResource("28_pq8jk")]
-position = Vector2(-2240, 18176)
+position = Vector2(-3200, 17856)
+
+[node name="follow16" type="Node2D" parent="regions" unique_id=341963474]
+position = Vector2(-3072, 18304)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(5, 6)
+view_height_cells = 7.0
 
 [node name="level-w4-4" parent="regions" unique_id=193901429 instance=ExtResource("29_q57r8")]
-position = Vector2(-2112, 18816)
+position = Vector2(-3072, 18688)
+
+[node name="follow17" type="Node2D" parent="regions" unique_id=1015449895]
+position = Vector2(-2304, 18688)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(19, 3)
+view_height_cells = 9.0
 
 [node name="level-w4-5" parent="regions" unique_id=466806688 instance=ExtResource("30_4kmvx")]
-position = Vector2(-256, 18688)
+position = Vector2(-1216, 18560)
+
+[node name="follow18" type="Node2D" parent="regions" unique_id=487480373]
+position = Vector2(-1920, 19008)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(10, 10)
+view_height_cells = 9.0
 
 [node name="level-w4-6" parent="regions" unique_id=1936183334 instance=ExtResource("31_4wdv8")]
-position = Vector2(-1088, 19840)
+position = Vector2(-2048, 19712)
+
+[node name="follow19" type="Node2D" parent="regions" unique_id=445366805]
+position = Vector2(-1536, 19840)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(9, 5)
+view_height_cells = 7.0
 
 [node name="level-w4-7" parent="regions" unique_id=377895207 instance=ExtResource("31_myjip")]
-position = Vector2(-64, 19904)
+position = Vector2(-1024, 19776)
+
+[node name="follow20" type="Node2D" parent="regions" unique_id=1079294016]
+position = Vector2(-832, 20224)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(5, 30)
+view_height_cells = 8.0
 
 [node name="level-w5-1" parent="regions" unique_id=919033331 instance=ExtResource("32_5nedk")]
-position = Vector2(256, 22208)
+position = Vector2(-832, 22080)
 
 [node name="level-w5-2" parent="regions" unique_id=1301674290 instance=ExtResource("33_40xph")]
-position = Vector2(896, 22272)
+position = Vector2(-192, 22208)
+
+[node name="follow21" type="Node2D" parent="regions" unique_id=493044298]
+position = Vector2(-128, 22656)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(5, 17)
+view_height_cells = 8.0
+
+[node name="follow23" type="Node2D" parent="regions" unique_id=197028643]
+position = Vector2(256, 22208)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(20, 5)
+view_height_cells = 8.0
 
 [node name="level-w5-3" parent="regions" unique_id=810568641 instance=ExtResource("34_8lgfd")]
-position = Vector2(2688, 22272)
+position = Vector2(1600, 22208)
+
+[node name="follow22" type="Node2D" parent="regions" unique_id=661789318]
+position = Vector2(1664, 22656)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(5, 17)
+view_height_cells = 8.0
 
 [node name="level-w5-4" parent="regions" unique_id=1670497553 instance=ExtResource("35_dyafi")]
-position = Vector2(832, 23808)
+position = Vector2(-256, 23744)
+
+[node name="follow24" type="Node2D" parent="regions" unique_id=45618509]
+position = Vector2(320, 23808)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(19, 5)
+view_height_cells = 8.0
 
 [node name="level-w5-5" parent="regions" unique_id=1515666413 instance=ExtResource("36_r5yoc")]
-position = Vector2(2560, 23744)
+position = Vector2(1472, 23680)
+
+[node name="follow25" type="Node2D" parent="regions" unique_id=563722202]
+position = Vector2(2112, 23744)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(23, 6)
+view_height_cells = 10.0
+
+[node name="follow26" type="Node2D" parent="regions" unique_id=567356031]
+position = Vector2(1536, 24320)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(6, 17)
+view_height_cells = 10.0
 
 [node name="level-w5-6" parent="regions" unique_id=237792747 instance=ExtResource("37_1m1ue")]
-position = Vector2(2560, 25344)
+position = Vector2(1472, 25280)
+
+[node name="follow27" type="Node2D" parent="regions" unique_id=1091374805]
+position = Vector2(2368, 25728)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(23, 5)
+view_height_cells = 10.0
 
 [node name="level-w5-7" parent="regions" unique_id=799880802 instance=ExtResource("38_ntuqo")]
-position = Vector2(4608, 23488)
+position = Vector2(3520, 23424)
+
+[node name="follow28" type="Node2D" parent="regions" unique_id=424188759]
+position = Vector2(3840, 24448)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(5, 20)
+view_height_cells = 10.0
 
 [node name="level-w5-8" parent="regions" unique_id=923210192 instance=ExtResource("39_ca4ee")]
-position = Vector2(4736, 25600)
+position = Vector2(3648, 25536)
+
+[node name="follow29" type="Node2D" parent="regions" unique_id=1755805191]
+position = Vector2(4352, 26432)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(5, 20)
+view_height_cells = 12.0
+
+[node name="follow30" type="Node2D" parent="regions" unique_id=1331163845]
+position = Vector2(4160, 31424)
+script = ExtResource("4_jhx03")
+mode = 1
+region_name = "test1"
+size_cells = Vector2i(11, 20)
+view_height_cells = 12.0
 
 [node name="level-w5-9" parent="regions" unique_id=1109810479 instance=ExtResource("40_qaasp")]
-position = Vector2(5056, 27584)
+position = Vector2(3968, 27520)
 
 [node name="level-w5-10" parent="regions" unique_id=140379608 instance=ExtResource("41_1v02h")]
-position = Vector2(4928, 30144)
+position = Vector2(3840, 30080)
 
 [node name="Objects" type="Node2D" parent="." unique_id=107722677]
 
