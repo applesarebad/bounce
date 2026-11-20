@@ -90,21 +90,25 @@ func subject_position() -> Vector2:
 
 # --- Region tracking --------------------------------------------------------
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if map_open or _subject == null or current_region == null:
 		return
 
+	var prev_region := current_region
 	_evaluate_region(false)
+
+	if current_region != prev_region:
+		return
 
 	if current_region.mode != CameraRegion.Mode.FOLLOW:
 		return
 
-	var here := region_at(subject_position())
+	var pos := subject_position()
+	var here := region_at(pos)
 	var limits := current_region.get_bounds()
 	if here and here != current_region:
 		limits = limits.merge(here.get_bounds())
-	camera.update_follow(subject_position(), limits)
-
+	camera.update_follow(pos, limits, delta)
 
 
 func _evaluate_region(allow_frame: bool) -> void:

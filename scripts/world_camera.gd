@@ -1,8 +1,8 @@
 class_name WorldCamera
 extends Camera2D
 
-@export var transition_time: float = 0.45
-@export var transition_trans: Tween.TransitionType = Tween.TRANS_CUBIC
+@export var transition_time: float = 0.6
+@export var transition_trans: Tween.TransitionType = Tween.TRANS_SINE
 @export var transition_ease: Tween.EaseType = Tween.EASE_IN_OUT
 
 ## Cap on magnification, so a tiny island doesn't fill the screen with four cells.
@@ -25,7 +25,6 @@ func _ready() -> void:
 # --- Frame mode -------------------------------------------------------------
 func frame_rect(rect: Rect2, animated: bool = true, duration: float = -1.0) -> void:
 	_following = false
-	position_smoothing_enabled = false
 	_target_rect = rect
 	_kill_tween()
 
@@ -33,9 +32,12 @@ func frame_rect(rect: Rect2, animated: bool = true, duration: float = -1.0) -> v
 	var target_zoom := _zoom_for_rect(rect)
 	var target_pos := rect.get_center()
 
+	position_smoothing_enabled = false
+
 	if not animated or time <= 0.0:
 		_apply_zoom(target_zoom)
 		global_position = target_pos
+		reset_smoothing()
 		return
 
 	_tween = create_tween().set_parallel(true)
@@ -43,10 +45,9 @@ func frame_rect(rect: Rect2, animated: bool = true, duration: float = -1.0) -> v
 	_tween.tween_property(self, "global_position", target_pos, time)
 	_tween.tween_method(_apply_zoom_log, log(zoom.x), log(target_zoom), time)
 
-
 # --- Follow mode ------------------------------------------------------------
 
-func begin_follow(view_height: float, animated: bool = true) -> void:
+func begin_follow(view_height: float, animated: bool = true, duration: float = -1.0) -> void:
 	if _following and is_equal_approx(_follow_view_height, view_height):
 		return
 
@@ -55,22 +56,29 @@ func begin_follow(view_height: float, animated: bool = true) -> void:
 	_target_rect = Rect2()
 	_kill_tween()
 
-	position_smoothing_enabled = true
-	position_smoothing_speed = follow_smoothing
-
+	var time := transition_time if duration < 0.0 else duration
 	var target_zoom := _zoom_for_height(view_height)
-	if not animated or transition_time <= 0.0:
+
+	position_smoothing_enabled = false
+
+	if not animated or time <= 0.0:
 		_apply_zoom(target_zoom)
+		reset_smoothing()
 		return
 
 	_tween = create_tween()
 	_tween.set_trans(transition_trans).set_ease(transition_ease)
-	_tween.tween_method(_apply_zoom_log, log(zoom.x), log(target_zoom), transition_time)
-
-func update_follow(point: Vector2, limits: Rect2) -> void:
+	_tween.tween_method(_apply_zoom_log, log(zoom.x), log(target_zoom), time)
+func update_follow(point: Vector2, limits: Rect2, delta: float = -1.0) -> void:
 	if not _following:
 		return
-	global_position = _clamp_centre(point, limits)
+	var clamped := _clamp_centre(point, limits)
+	var dt := get_process_delta_time() if delta < 0.0 else delta
+	if follow_smoothing <= 0.0 or dt <= 0.0:
+		global_position = clamped
+	else:
+		var weight := 1.0 - exp(-follow_smoothing * dt)
+		global_position = global_position.lerp(clamped, weight)
 
 
 func is_following() -> bool:
