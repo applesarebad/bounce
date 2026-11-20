@@ -39,13 +39,21 @@ func step():
 	var reset_tracker = false
 	
 	var tween = create_tween()
+	ray.clear_exceptions()
 	ray.position = direction * Constants.GRID_SIZE/4
 	ray.target_position = direction * Constants.GRID_SIZE*3/4
 	ray.force_raycast_update()
-
+	
 	if ray.is_colliding():
 		collider = ray.get_collider()
-
+		if collider is Wall and collider.get_reflection(direction) == Transform2D():
+				ray.add_exception(collider)
+				collider = null
+	ray.force_raycast_update()
+	
+	if ray.is_colliding():
+		collider = ray.get_collider()
+		
 		if collider is Portal:
 			portal = collider
 			var out_dir = portal.output_direction(direction)

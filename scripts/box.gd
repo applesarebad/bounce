@@ -44,6 +44,14 @@ func hit(dir):
 	ray.target_position = dir * Constants.GRID_SIZE*3/4
 	add_child(ray)
 	ray.force_raycast_update()
+	var collider = null
+	if ray.is_colliding():
+		collider = ray.get_collider()
+	if collider is Wall and collider.get_reflection(dir) == Transform2D():
+		ray.add_exception(collider)
+		collider = null
+	ray.force_raycast_update()
+	
 	if ray.is_colliding() and ray.get_collider() is Wall:
 		ray.get_collider().hit(dir)
 	ray.queue_free()
@@ -60,6 +68,14 @@ func soft(dir: Vector2) -> bool:
 	var collider = null
 	if ray.is_colliding():
 		collider = ray.get_collider()
+	if collider is Wall and collider.get_reflection(dir) == Transform2D():
+		ray.add_exception(collider)
+		collider = null
+	ray.force_raycast_update()
+	if ray.is_colliding():
+		collider = ray.get_collider()
+	
+	
 	ray.queue_free()
 
 	if collider is Portal:
@@ -82,6 +98,12 @@ func move(dir, speed):
 	add_child(ray)
 	ray.force_raycast_update()
 	var collider = null
+	if ray.is_colliding():
+		collider = ray.get_collider()
+	if collider is Wall and collider.get_reflection(dir) == Transform2D():
+		ray.add_exception(collider)
+		collider = null
+	ray.force_raycast_update()
 	if ray.is_colliding():
 		collider = ray.get_collider()
 	ray.queue_free()

@@ -24,7 +24,9 @@ func shoot(dir):
 	var transformer = null
 	if $ray.is_colliding():
 		collider = $ray.get_collider()
-	if collider != null and collider is Wall:
+	if collider is Wall and collider.get_reflection(dir) == Transform2D():
+		collider = box_in_front(dir)
+	if collider is Wall:
 		transformer = collider.get_reflection(dir)
 		collider.hit(dir)
 		if collider.type == 2:
@@ -93,8 +95,10 @@ func move(dir):
 	print("colliding: ", $ray.is_colliding(), " collider: ", $ray.get_collider())
 	if $ray.is_colliding():
 		collider = $ray.get_collider()
+	if collider is Wall and collider.get_reflection(dir) == Transform2D():
+		collider = box_in_front(dir)
 	if collider is Wall and collider.get_reflection(dir) != Transform2D() and !collider.soft(dir):
-		$ray.get_collider().hit(dir)
+		collider.hit(dir)
 	elif collider is Portal:
 		var out_dir = collider.output_direction(dir)
 		var block = collider.outside(dir)
@@ -116,9 +120,9 @@ func move(dir):
 			moving = false
 			if _cancelled:
 				return
-	else:
-		if $ray.is_colliding() and $ray.get_collider() is Box:
-			$ray.get_collider().move(dir, speed)
+	else:	
+		if collider is Box:
+			collider.move(dir, speed)
 		moving = true
 		var tween = create_tween()
 		tween.tween_property(self, "position", position + Constants.GRID_SIZE*dir, Constants.GRID_SIZE / speed)
@@ -145,6 +149,8 @@ func fling(dir):
 		var collider = null
 		if $ray.is_colliding():
 			collider = $ray.get_collider()
+		if collider is Wall and collider.get_reflection(dir) == Transform2D():
+			collider = box_in_front(dir)
 		if collider is Wall and collider.get_reflection(dir) != Transform2D() and !collider.soft(dir):
 			collider.hit(dir)
 			moving = false
@@ -152,6 +158,7 @@ func fling(dir):
 		elif collider is Portal:
 			var out_dir = collider.output_direction(dir)
 			var block = collider.outside(dir)
+			
 			if block is Wall and block.get_reflection(out_dir) != Transform2D() and !block.soft(out_dir):
 				block.hit(out_dir)
 				moving = false
@@ -172,8 +179,8 @@ func fling(dir):
 				if _cancelled:
 					return
 		else:
-			if $ray.is_colliding() and $ray.get_collider() is Box:
-				$ray.get_collider().move(dir, 2*speed)
+			if collider is Box:
+				collider.move(dir, 2*speed)
 			var tween = create_tween()
 			tween.tween_property(self, "position", position + Constants.GRID_SIZE*dir, (Constants.GRID_SIZE/2)/speed)
 			await wait_tween(tween)
@@ -187,6 +194,23 @@ func fling(dir):
 	get_parent().save()
 	if World.instance:
 		World.instance.on_player_settled()
+
+func box_in_front(dir) -> Box:
+	var found: Box = null
+	$ray.force_raycast_update()
+	while $ray.is_colliding():
+		var c = $ray.get_collider()
+		if c is Box:
+			found = c
+			break
+		var passable = c is Wall and (c.get_reflection(dir) == Transform2D())
+		if not passable:
+			break
+		$ray.add_exception(c)
+		$ray.force_raycast_update()
+	$ray.clear_exceptions()
+	return found
+
 
 func destroy():
 	#global_position = Vector2(100000,100000)
